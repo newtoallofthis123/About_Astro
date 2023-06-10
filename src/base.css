@@ -1,0 +1,55 @@
+/* Fancy BTN from https: //uiverse.io/adamgiebl/giant-donkey-36 */
+/* Slightly Modified for My Needs */
+
+::selection{
+    background: #000ea5;
+    color: #e8e8e8;
+}
+
+.btn {
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: inherit;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+}
+
+.btn:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+}
+
+.btn:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+
+.btn a {
+    color: black;
+    text-decoration: none;
+}
+
+.page-div {
+    padding: 2rem;
+    margin: 2rem;
+    border: 3px solid currentColor;
+    border-radius: 0.4em;
+    box-shadow: 0.3em 0.4em;
+}
+
+.page-div img {
+    width: 80%;
+    margin: 0 auto;
+    border: 3px solid currentColor;
+    border-radius: 24px;
+}
+
+@media screen and (max-width: 1024px) {
+    .page-div{
+        padding: 1rem;
+        margin: 1rem;
+    }
+}

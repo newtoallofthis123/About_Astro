@@ -1,0 +1,8 @@
+---
+import data from "./data.json"
+const {id} = Astro.params
+// @ts-ignore
+const link:any = data[id]
+if(link) return Astro.redirect(link)
+else return Astro.redirect("/404")
+---

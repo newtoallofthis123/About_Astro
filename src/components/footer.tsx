@@ -1,0 +1,223 @@
+import React from 'react';
+
+export default function Footer() {
+    const [footer, setFooter] = React.useState(true)
+    React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if (window.innerWidth > 1028) {
+                setFooter(true)
+            }
+        }
+    }, [])
+    return (
+        <>
+            <footer className="border-t-2 p-5 border-black">
+                <div className="flex flex-col lg:flex-row">
+                    <div className="w-full lg:w-2/6">
+                        <div className="flex flex-row ml-8 items-center">
+                            <img
+                                width={32}
+                                height={32}
+                                src="/logo192.webp"
+                                alt="Noob Logo"
+                            />
+                            <h1
+                                style={{
+                                    fontFamily: 'Roboto, sans-serif',
+                                }}
+                                className="text-3xl text-center font-bold pl-2"
+                            >
+                                NoobScience {new Date().getFullYear()}
+                            </h1>
+                        </div>
+                        <ul className="py-4 ml-8 text-lg leading-8">
+                            <li>All Rights and Wrongs Reserved</li>
+                            <li>
+                                Code licensed under <a href="https://license.noobscience.rocks">MIT</a>
+                            </li>
+                            <li>Made with pride in 🪷 India</li>
+                            <li>
+                                With{' '}
+                                <i className="bi bi-heart-fill text-lg text-red-500"></i>
+                                , Ishan
+                            </li>
+                        </ul>
+                    </div>
+                    {footer && (
+                        <>
+                            <div
+                                style={{
+                                    columnGap: '5rem',
+                                }}
+                                className="w-full flex justify-center items-center flex-row lg:w-2/6"
+                            >
+                                <div className="flex flex-col lg:flex-row">
+                                    <div className="flex flex-col">
+                                        <h1 className="text-xl pb-4">
+                                            SiteMap
+                                        </h1>
+                                        <a
+                                            href="/about"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            About
+                                        </a>
+                                        <a
+                                            href="/projects"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Projects
+                                        </a>
+                                        <a
+                                            href="/blog"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Blog
+                                        </a>
+                                        <a
+                                            href="/skills"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Skills
+                                        </a>
+                                        <a
+                                            href="/resume"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Resume
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col lg:flex-row">
+                                    <div className="flex flex-col">
+                                        <h1 className="text-xl pb-4">
+                                            Dynamic
+                                        </h1>
+                                        <a
+                                            href="/updates"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Updates
+                                        </a>
+                                        <a
+                                            href="/notes"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Notes
+                                        </a>
+                                        <a
+                                            href="/go"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Go Url
+                                        </a>
+                                        <a
+                                            href="/code"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Pastebin
+                                        </a>
+                                        <a
+                                            href="/blog"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Noobites
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col lg:flex-row">
+                                    <div className="flex flex-col">
+                                        <h1 className="text-xl pb-4">
+                                            Resources
+                                        </h1>
+                                        <a
+                                            href="/i/tos"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Terms
+                                        </a>
+                                        <a
+                                            href="/i/privacy"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Privacy
+                                        </a>
+                                        <a
+                                            href="/contact"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Contact
+                                        </a>
+                                        <a
+                                            href="/i/bugs"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Bugs
+                                        </a>
+                                        <a
+                                            href="/i/support"
+                                            className="text-lg text-gray-600 no-underline hover:underline"
+                                        >
+                                            Support
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="w-full lg:w-2/6 text-center">
+                                <h1 className="text-2xl pt-4 lg:pt-0">
+                                    Socials
+                                </h1>
+                                <ul className="flex flex-row justify-center items-center text-xl pt-3 gap-8">
+                                    <li>
+                                        <a
+                                            className="no-underline"
+                                            href="/social/github"
+                                        >
+                                            <i className="bi bi-github"></i>
+                                            <br />
+                                            GitHub
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="no-underline"
+                                            href="/social/ig"
+                                        >
+                                            <i className="bi bi-instagram"></i>
+                                            <br />
+                                            Instagram
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="no-underline"
+                                            href="/social/twitter"
+                                        >
+                                            <i className="bi bi-twitter"></i>
+                                            <br />
+                                            Twitter
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className="no-underline"
+                                            href="/social/mail"
+                                        >
+                                            <i className="bi bi-envelope"></i>
+                                            <br />
+                                            Mail
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p className="pt-6 text-xl">
+                                    Do or do not, there is no try.
+                                </p>
+                                <p className="pt-2 text-lg">- Master Yoda</p>
+                            </div>
+                        </>
+                    )}
+                </div>
+            </footer>
+        </>
+    );
+}

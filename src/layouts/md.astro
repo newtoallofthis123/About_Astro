@@ -1,0 +1,65 @@
+---
+import Base from "./base.astro";
+import NormalNav from "../components/normal_nav";
+import Footer from "../components/footer";
+const { frontmatter }= Astro.props;
+---
+
+<Base title={frontmatter.title}>
+    <NormalNav client:load />
+    <div class="p-5">
+        <h1>{frontmatter.title}</h1>
+        <h2 class="text-lg font-light text-center p-2">Written by {frontmatter.author} on {
+            new Date(frontmatter.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            })
+            }</h2>
+        <slot />
+    </div>
+    <Footer client:idle />
+</Base>
+
+<style is:inline>
+    h1{
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 700;
+    }
+    h2,h3{
+        font-weight: 700;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
+    p{
+        font-size: 1.2rem;
+    }
+    a{
+        text-decoration: underline;
+    }
+    img{
+        max-width: 100%;
+    }
+    code{
+        background-color: #eee;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+    }
+    ul{
+        list-style: disc;
+        padding-left: 1rem;
+    }
+    ol{
+        list-style: decimal;
+        padding-left: 1rem;
+    }
+    blockquote{
+        border-left: 0.25rem solid #eee;
+        padding-left: 1rem;
+    }
+</style>

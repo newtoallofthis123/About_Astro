@@ -1,0 +1,13 @@
+---
+import Base from "./base.astro";
+import Nav from "../components/nav"
+import Footer from "../components/footer";
+import Notification from "../components/notification/notification";
+---
+
+<Base title="NoobScience | Home">
+    <Notification client:idle />
+    <Nav client:load />
+    <slot />
+    <Footer client:idle />
+</Base>

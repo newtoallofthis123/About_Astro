@@ -1,0 +1,13 @@
+---
+import Normal from "../../layouts/normal.astro"
+import NoteArchive from "../../components/notes/archive"
+---
+
+<Normal title="Notes">
+    <h1 class="text-center p-4 text-4xl font-bold">
+        Some of My Notes
+    </h1>
+    <div class="m-20 mt-10">
+        <NoteArchive num={15} client:load />
+    </div>
+</Normal>

@@ -1,0 +1,47 @@
+---
+import Normal from "../../layouts/normal.astro";
+---
+
+<Normal title="Ishan's Social Links">
+    <div>
+        <h1 class="text-4xl text-center p-4 font-bold">
+            Social Links
+        </h1>
+        <div class="flex flex-col items-center">
+            <a type="button" class="social_btn" href="/social/github">
+                <i class="bi bi-github"></i> GitHub
+            </a>
+            <a href="/social/yt" type="button" class="social_btn">
+                <i class="bi bi-youtube"></i> YouTube
+            </a>
+            <a href="/social/twitter" type="button" class="social_btn">
+                <i class="bi bi-twitter"></i> Twitter
+            </a>
+            <a href="/social/blog" type="button" class="social_btn">
+                <i class="bi bi-pen-fill"></i> Blog
+            </a>
+            <a href="/social/website" type="button" class="social_btn">
+                <i class="bi bi-globe"></i> Website
+            </a>
+            <a href="/social/ig" type="button" class="social_btn">
+                <i class="bi bi-instagram"></i> Instagram
+            </a>
+            <a href="/social/twitch" type="button" class="social_btn">
+                <i class="bi bi-twitch"></i> Twitch
+            </a>
+            <a href="/social/github" type="button" class="social_btn">
+                <i class="bi bi-spotify"></i> Spotify
+            </a>
+            <a href="/social/github" type="button" class="social_btn">
+                <i class="bi bi-stack-overflow"></i> StackOverflow
+            </a>
+        </div>
+    </div>
+</Normal>
+<style>
+    .social_btn{
+        border: 3px solid #000000;
+        border-radius: 24px;
+        @apply px-8 py-2 md:py-4 w-4/5 md:w-3/5 text-xl hover:shadow-lg text-center m-2 md:m-3
+    }
+</style>

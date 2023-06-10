@@ -1,0 +1,15 @@
+---
+export interface Props {
+    title: string
+}
+import Base from "./base.astro";
+import NormalNav from "../components/normal_nav";
+import Footer from "../components/footer";
+const {title}= Astro.props
+---
+
+<Base title={title}>
+    <NormalNav client:load />
+    <slot />
+    <Footer client:idle />
+</Base>

@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import Normal from "../../layouts/normal.astro";
+let posts:any = await Astro.glob("./*.mdx");
+posts = posts.sort((a:any, b:any) => {
+    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+});
+---
+
+<Normal title="NoobScience Random">
+    <div class="p-4">
+        <h1 class="text-4xl font-bold text-center">
+            Noobites
+        </h1>
+        <p class="p-2 pt-4 mx-5 md:mx-20 text-xl leading-10">
+            Small little posts that I write about random things that I find interesting.
+            They are not long enough to be a blog post, but I still want to share them.
+            Okay, to be honest, I built this using <a class="underline" href="https://astro.build">Astro</a>
+            and hey, Astro has support for markdown files, so why not?
+            So, here are some random posts that I have written.
+            If you want the actual blog posts, I post regularly on hashnode and substack
+        </p>
+        <div class="text-center">
+            <button class="btn bg-yellow-400 text-2xl mx-4"><a href="/social/blog">Hashnode</a></button>
+            <button class="btn bg-yellow-400 text-2xl mx-4"><a href="https://noobscience.substack.com">Substack</a></button>
+        </div>
+        <div>
+            <h1 class="text-center text-3xl p-8 font-bold">
+                All the posts
+            </h1>
+            <div class="">
+                {
+                posts.map((post) => (
+                    <div
+                    onclick={"window.location.href = '" + post.url + "';"}                    
+                    class="p-4 border-2 border-gray-400 rounded-md m-4 mx-5 md:mx-20 cursor-pointer">
+                        <a href={post.url} class="text-2xl font-semibold">
+                            {post.frontmatter.title}
+                        </a>
+                        <p class="pt-3 text-gray-800">
+                            {post.frontmatter.description}
+                        </p>
+                        <p class="text-gray-500 pt-3">
+                            {new Date(post.frontmatter.date).toDateString()}
+                        </p>
+                    </div>
+                ))
+                }
+            </div>
+        </div>
+    </div>
+</Normal>

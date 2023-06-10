@@ -1,0 +1,135 @@
+---
+import Home from "../layouts/home.astro"
+import UpdateLatest from "../components/updates/latest";
+import UpdateArchive from "../components/updates/archive";
+import NoteArchive from "../components/notes/archive";
+---
+
+<Home>
+	<div>
+		<div class="flex flex-col md:flex-row">
+			<div class="w-full md:w-1/2 bg-yellow-400">
+				<h1 class="text-center p-4 md:p-8 text-4xl md:text-6xl font-semibold">
+					Meet The Noob
+				</h1>
+				<p class="py-4 px-6 text-2xl leading-10">
+					Hope you are having a great morning! I am Ishan Joshi and I like to talk tech.
+					 Currently at <a class="underline" href="https://griet.ac.in">GRIET</a>, I am pursuing my Bachelors in Computer Science. You might 
+					 find me in India, but mostly, it is fun living on the  Internet. Anyways, a 
+					 little quirky and a lot of fun, I think I am a pretty cool guy. So, let's get 
+					 to know each other.
+					 BTW:) I'm a pretty great guy, if I do say so myself.
+				</p>
+				<div class="text-center p-5">
+					<button class="btn text-5xl bg-pink-400">
+						<a href="/about">
+						Let's Get Going
+						</a>
+					</button>
+				</div>
+				<p class="py-4 px-6 text-2xl leading-10">
+					Or you know, I can take you on a tour of my
+					<a href="/projects">Projects</a> or you are welcome to read my <a href="/journals">Journals</a>.
+				</p>
+			</div>
+			<div class="flex flex-col justify-center items-center w-full md:w-1/2 bg-blue-400">
+				<img class="text-center" width="612" height="612" src="/assets/profile.webp" alt="NoobScience Image">
+				<h1 class="font-bold text-4xl underline decoration-8 pb-5">
+					The Noob
+				</h1>
+			</div>
+		</div>
+		<div class="flex flex-col justify-center items-center w-full bg-green-400">
+			<h1 class="p-4 text-4xl font-bold">
+				What's Up
+			</h1>
+			<UpdateLatest client:idle />
+		</div>
+		<div class="flex flex-col md:flex-row">
+			<div class="w-full md:w-4/6">
+				<div class="text-lg p-5 leading-8 pl-10">
+					<h1 class="text-4xl text-center p-4 font-bold">
+						Ishan's Corner
+					</h1>
+					<p>
+						Hey! I am Ishan and I love tech.
+						I am a self taught developer and building cool websites is my thing.
+						Started programming when I was about 16 and I have been hooked ever since.
+						Currently, I am pursuing my Bachelors in Computer Science at <a class="underline" href="https://griet.ac.in">GRIET</a>.
+						When I'm not coding, you can probably find me with my friends or with a book.
+					</p>
+					<p>
+						Blogging and writing is something I have always enjoyed. I have been writing since I was 12.
+						Yeah. I know. I am a nerd. But, I love it. I have been writing small stories for a long time.
+						BTW, we can nerd about anything. You can just hit me up on <a href="/contact">the site</a> itself.
+					</p>
+					<p>
+						I am currently coding in javascript and python. I use C for my college stuff.
+						You can check out all my <a href="/skills">skills</a> here.
+					</p>
+					<p>
+
+					</p>
+				</div>
+				<div class="flex flex-col border-t-2 mt-3 border-black md:flex-row">
+					<div class="w-full bg-violet-300 md:w-3/5">
+						<h1 class="text-2xl text-center px-4 py-2 font-bold">
+							<i class="bi bi-circle-fill"></i> Bullets about me
+						</h1>
+						<div class="text-center flex flex-row items-center justify-center text-xl leading-8 p-2">
+						 	<p>
+								Tech Enthusiast | Student | Dog Person | Writer | Geek | Cute
+							</p>
+						</div>
+						<p class="text-xl px-8">
+							I'm a pretty great guy, if I do say so myself.
+							If you enjoyed reading this paper and wanna talk, you can hit me up.
+						</p>
+						<div class="text-center p-4 text-xl">
+							<button class="btn bg-yellow-300">
+								<a href="/contact">
+									Contact Me
+								</a>
+							</button>
+						</div>
+					</div>
+					<div class="w-full md:border-l-2 border-black p-2 md:pl-2 md:w-2/5">
+						<h1 class="text-center text-2xl pb-2 font-bold">
+							<i class="bi bi-chat-left-fill"></i> Site Updates
+						</h1>
+						<p class="text-lg leading-8">
+							In the v.0.1 of the site, the site was rewritten in Astro.
+							So, I finally migrated from nextjs to Astro.
+							Don't get me wrong, nextjs is great, but it was a little too much for a simple site like this.
+							Also, I am planning to add a lot of new features to the site.
+							Stay tuned for more updates.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="w-full bg-pink-400 md:w-2/6">
+				<div>
+					<div class="md:border-2 md:border-y-0 border-black">
+						<h1 class="px-8 py-4 text-4xl font-bold">
+							Updates
+						</h1>
+						<div>
+							<UpdateArchive num={6} client:idle />
+						</div>						
+					</div>
+					<div class="md:border-2 md:border-y-0 border-black">
+						<h1 class="px-8 py-4 text-4xl font-bold">
+							Latest Notes
+						</h1>
+						<NoteArchive num={4} client:idle />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</Home>
+<style is:inline>
+	a{
+		text-decoration: underline;
+	}
+</style>
