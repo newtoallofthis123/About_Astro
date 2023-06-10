@@ -5,39 +5,48 @@ import Footer from "../components/footer";
 const { frontmatter }= Astro.props;
 ---
 
-<Base title={frontmatter.title}>
+<Base title={frontmatter.title + " | Noobites"}>
     <NormalNav client:load />
     <div class="p-5">
         <h1>{frontmatter.title}</h1>
-        <h2 class="text-lg font-light text-center p-2">Written by {frontmatter.author} on {
+        <h2 class="text-lg font-light text-center pt-2">Written by {frontmatter.author} on {
             new Date(frontmatter.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             })
             }</h2>
-        <slot />
+        <div class="flex flex-col justify-center items-center pb-5">    
+            <div class="w-5/6 p-2">
+                <img class="rounded-md" src={frontmatter.image} alt="Blog Header">
+            </div>
+            <div class="w-full px-4 pb-2 md:p-0 md:w-4/5">
+                <slot />
+            </div>
+        </div>
     </div>
     <Footer client:idle />
 </Base>
-
 <style is:inline>
     h1{
-        font-size: 2.5rem;
+        font-size: 4rem;
         text-align: center;
         font-weight: 700;
     }
     h2,h3{
         font-weight: 700;
+        padding: 1rem 0;
     }
     h2{
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     h3{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     p{
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        padding: 0.5rem 0;
+        line-height: 2rem;
     }
     a{
         text-decoration: underline;
@@ -45,21 +54,18 @@ const { frontmatter }= Astro.props;
     img{
         max-width: 100%;
     }
-    code{
-        background-color: #eee;
-        padding: 0.25rem;
-        border-radius: 0.25rem;
-    }
-    ul{
-        list-style: disc;
-        padding-left: 1rem;
+    pre{
+        padding: 1rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
     }
     ol{
         list-style: decimal;
         padding-left: 1rem;
     }
     blockquote{
-        border-left: 0.25rem solid #eee;
+        border-left: 0.25rem solid #9c9c9c;
         padding-left: 1rem;
+        margin: 1rem 0;
     }
 </style>

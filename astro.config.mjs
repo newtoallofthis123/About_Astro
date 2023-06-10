@@ -10,5 +10,14 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   integrations: [react(), tailwind(), mdx()],
   output: "server",
-  adapter: netlify()
+  adapter: netlify(),
+  markdown: {
+    gfm: true,
+    shikiConfig: {
+      theme: 'dracula',
+      langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'sh', 'yaml', 'yml', 'graphql', 'md', 'mdx'],
+      wrap: true,
+    },
+    syntaxHighlight: 'shiki'
+  }
 });

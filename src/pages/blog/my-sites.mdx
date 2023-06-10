@@ -1,0 +1,158 @@
+---
+title: My Sites and Speeds
+date: 2023-06-10
+author: Ishan
+description: A small blog post where I talk about website speeds and my experience with them.
+layout: "../../layouts/md.astro"
+image: "https://images.fanpop.com/images/image_uploads/Lightning-McQueen-disney-pixar-cars-772510_1700_1100.jpg"
+---
+
+> Speed, I am speed, Faster than fast, quicker than quick, I am lightning. <br/> - Lightning McQueen
+
+Why do developers want their sites, apps, and even games to be like Lightning McQueen? To win the Piston Cup?
+Or is there something more to it?
+
+Now I know that there are so many great articles written on this topic on the internet and I am not going to bore you with the same stuff again.
+I am just going to share my experience with you and why I think it really matters.
+
+## Why do I care about website speeds?
+
+Now I guess it makes more sense to tell you why I care about my website speeds.
+So, for a little bit of a background, I like to think I am a full stack web developer, but to be honest, I am a front end developer who knows backend stuff.
+I have been working in the Javascript ecosystem for a while now and I have worked on a lot of projects.
+My first like "web application" was a Pastebin service I had made using the popular
+python framework [Flask](https://flask.palletsprojects.com/en/2.0.x/).
+
+This was quite a good experience for me, I learned a lot about backend development and how to make a web application.
+However, one crucial thing I had ignored was my frontend.
+The frontend for NoobPaste, as I had called it, was a simple HTML page with a form and a textarea.
+
+Ofcourse it had a bit of CSS to make it look good and a codemirror instance to make the textarea look like a code editor, but other
+than that, it was just a simple HTML page.
+All the data was being sent to the backend using a simple POST request and for ever GET request, the backend would send the HTML page back to the client.
+Now this way of doing things is not bad, but it is not good either.
+
+Unbeknownst to me, I had created a website in 2020 that was living in 2010.
+I had used Jquery 😄 to make requests. Now don't get me wrong, Jquery is a great library and it helped me alot while learning web development,
+but it is not something you should be using in 2020.
+
+Looking back, I also hosted the site on a heroku free dyno, which meant that the site would go to sleep after 30 minutes of inactivity.
+So, all in all, it took about 15 to 20 seconds for the site to load.
+Yes. 15 to 20 seconds. Now, I know that is not a lot. I mean though I was not a web developer back in the windows XP days, I am pretty sure
+that was the average time it took for a website to load back then and it was considered normal.
+
+However, we live in 2023 now, where our attention spans are shorter than ever and we want everything to be fast and snappy.
+Even 1 to 2 second changes are noticeable to us.
+So, with all of this in mind, I decided to not make the same mistakes when designing my portfolio website.
+
+## My Portfolio Site
+
+So, I made the mistake of not caring about my website speeds once, but I was not going to make the same mistake again, until I did.
+Looking back, I really don't blame myself. It was my first time just making a portfolio site that was well designed and I was really excited about it.
+So excited, that I forgot to care about the performance of the site. This was even so bad because I had not even used any frameworks or libraries.
+I had just used plain HTML, CSS and Javascript.
+
+I had got so carried away with the design that I had forgotten to care about the performance of the site.
+I had written horrible CSS and Javascript code that was not only hard to read, but also hard to maintain.
+You might judge me, but on most elements, I had used inline styles even though they were already styled in the CSS file.
+It was a whole big mess, something that you might expect from a self taught developer who didn't even complete the full tutorial.
+
+However, that is one thing I always comend myself for. I never get stuck in the tutorial hell. I always try to make something of my own.
+And that is what I did with my portfolio site. I made it from scratch. I did not use any templates or frameworks. I just made it from scratch.
+Okay, why am I beating around the bush? I am just going to tell you the LSP (Load Speed Performance) of my site.
+
+### LSP
+
+One word, horrible. I mean, I am not going to lie, I was expecting it to be bad, but not this bad.
+I had used a lot of images in my site, which I had not optimized at all. I had used a lot of CSS and Javascript, which I had not minified.
+All in all, it was a mess.
+
+So, the LSP was around 8 seconds. Yes, 8 seconds for a static site. I mean it is one thing for a full stack app to have that sort of a LSP but 
+for a static site, it is just unacceptable. Looking back, it turns out I had just used a lot of images and I had not optimized them at all,
+my css was about 500kb and my javascript was about 300kb. I mean, I don't know what I was thinking.
+
+You can still access the site by going to [noobscience.surge.sh](https://noobscience.surge.sh) and you can see for yourself how bad it is.
+
+<div class="text-center">
+    <button class="btn bg-red-300 m-4">
+        <a href="https://noobscience.surge.sh">
+            Visit the old site
+        </a>
+    </button>
+</div>
+
+## Post Next Clarity
+
+Please don't leave after the name :) After a lot of time and delaying to understand and learn React and Next.js, I finally decided to learn them.
+As always, the way I started was bad, but I got better. I started with a simple create-react-app and then I moved on to Next.js.
+
+You can actually check out my old react site by going to [old.noobscience.rocks](https://old.noobscience.rocks).
+
+It's not the best, but it's not the worst either. I mean, it's a lot better than my old site. It has a LSP of about 3 seconds, which is not bad.
+I had done a lot of things right with this site. I had used a lot of images, but I had optimized them. I had used a lot of CSS and Javascript,
+but react had taken care of that for me. It was sort of perfect. So it was my portfolio for a while, until I decided to learn Next.js.
+
+Now the reason I decided to learn Next.js was because I wanted to add dynamiciy to my site. I wanted to add a blog and well, an updates page.
+So, I decided to learn Next.js. I had heard a lot of good things about it and I wanted to try it out for myself.
+My first experience was not the best. My Javascript was not the best and I had not used any sort of state management library.
+
+So, I had to use a lot of props and I had to pass them down a lot of components. It was a mess. However, overtime, I became good.
+I even redesigned my site with the help of my friends, set up a mongoDB database and added a blog and an updates page.
+Everything was dynamic and I was loving it. Google finally started indexing my site and that was when I realized that I had made a mistake.
+I had not optimized my site for SEO. So, I did. I added meta tags and I added a sitemap and a robots.txt file.
+All that good stuff. I even added a service worker to make my site a PWA.
+
+Everything was going great, until I realized that my site was not as fast as I wanted it to be. I mean, it was fast, but not fast enough.
+It was also not as accessible as I wanted it to be. I mean, it was accessible, but not as accessible as I wanted it to be.
+The reason, the secret culprit that was causing all of this, bad css and client side rendering.
+
+Now this Next.Js site was huge. It was about 9000 lines of code and it had taken me about 400 hours to make it.
+To be fair, most of that time was spent learning Next.js and React, but still, it was a lot of time to invest in a site.
+My Next.JS portfolio was a lot better than my old portfolio, but it was still not perfect. It was still not as fast as I wanted it to be.
+I had made the mistake of adding too much dynamicity to my site, too many api calls, too many components, too many images.
+So, even though it was a good site, it had a LSP of about 4 seconds.
+
+Now, I know that 4 seconds is not a lot, but it is still not as fast as I wanted it to be. I wanted it to be as fast as possible.
+No idea why, but I just wanted it to be as fast as possible. So, I decided to make a new site. A site that was fast, accessible and SEO optimized.
+
+## Welcome Astro
+
+![Astro](https://astro.build/assets/wallpapers/thumbs/desktop/arc.webp)
+
+So, I had heard about Astro a while back, but I had not really paid attention to it. I mean, I was happy with Next.js and I did not want to change.
+Infact, I had even used Astro and I had made a site with it. However, I had not really paid attention to it. I had just used it to make a small blog.
+
+However, after I realized that my Next.js site was not as fast as I wanted it to be, I decided to give Astro another try.
+The main thing I added to this however, was that I also decided to style my site with Tailwind CSS. I had heard a lot of good things about it
+and I wanted to try it out for myself. So, I decided to use Tailwind CSS with Astro.
+
+Now this combination was where things changed for me. I mean, I had used Tailwind CSS before, but I had not really used it to it's full potential.
+My Next.js site was styled with custom sass, which was just the worst. I mean, I had used a lot of classes and I had not really used any sort of
+utility classes. So, I decided to use Tailwind CSS with Astro and I was blown away. I mean, it was so easy to use and it was so fast.
+
+It took my just 15 hours to nearly convert 80% of my Next.js site to Astro. I mean, it was just so easy to use. I was blown away.
+All the dynamic elements of the Next.JS site were still there, but I had optimized them. I had used a lot of utility classes and I had used
+a lot of Tailwind CSS components. I mean, it was just so easy to use. I was blown away.
+
+Now Astro deserves a blog post, so I am not going to go into too much detail about it, but I will say this, it is amazing.
+
+So, finally, after a lot of work and 2 years of learning, I finally have a site that I am proud of. It is fast, it is accessible and it is SEO optimized.
+Guess what the LSP is? It is 0.5 seconds. Yes, 0.5 seconds. I mean, it is just so fast. I am so proud of it.
+
+Yes! It is this site. This blog you are reading is just a `.mdx` file that is being rendered by Astro.
+I am still working on it, but it is nearly done. I am quite happy with it. I added a good mobile menu and a lot of other things.
+That is until I find something else. I mean, I love having a site so much, that I shall never truely be happy with it.
+
+So, that is my story. I hope you enjoyed it. I hope you learned something from it and most importantly, I hope you learn from my mistakes.
+If you do love this small blog, then please do share it with your friends. I would really appreciate it.
+BTW, tell me what you think about it. I would love to hear your thoughts on it.
+
+<div class="text-center">
+    <button class="btn bg-yellow-300 m-4">
+        <a href="/contact">
+            Contact Me Here
+        </a>
+    </button>
+</div>
+
+Thanks for Reading,<br/>Ishan

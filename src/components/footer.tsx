@@ -31,30 +31,28 @@ export default function Footer() {
                             </h1>
                         </div>
                         <ul className="py-4 ml-8 text-lg leading-8">
-                            <li>All Rights and Wrongs Reserved</li>
+                            <li>All Rights Reserved</li>
                             <li>
-                                Code licensed under <a href="https://license.noobscience.rocks">MIT</a>
+                                Code licensed under{' '}
+                                <a href="https://license.noobscience.rocks">
+                                    MIT
+                                </a>
                             </li>
                             <li>Made with pride in 🪷 India</li>
                             <li>
                                 With{' '}
                                 <i className="bi bi-heart-fill text-lg text-red-500"></i>
-                                , Ishan
+                                {' '} by Ishan Joshi
                             </li>
                         </ul>
                     </div>
                     {footer && (
                         <>
-                            <div
-                                style={{
-                                    columnGap: '5rem',
-                                }}
-                                className="w-full flex justify-center items-center flex-row lg:w-2/6"
-                            >
+                            <div className="w-full flex justify-center items-center flex-row lg:w-2/6">
                                 <div className="flex flex-col lg:flex-row">
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col mr-10 md:mr-20 pr-5">
                                         <h1 className="text-xl pb-4">
-                                            SiteMap
+                                            Links
                                         </h1>
                                         <a
                                             href="/about"
@@ -89,7 +87,7 @@ export default function Footer() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col lg:flex-row">
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col mr-10 md:mr-20 pr-5">
                                         <h1 className="text-xl pb-4">
                                             Dynamic
                                         </h1>
@@ -126,7 +124,7 @@ export default function Footer() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col lg:flex-row">
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col mr-10 md:mr-20 pr-5">
                                         <h1 className="text-xl pb-4">
                                             Resources
                                         </h1>

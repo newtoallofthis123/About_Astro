@@ -4,35 +4,33 @@ import Normal from "../layouts/normal.astro";
 ---
 
 <Normal title="About NoobScience">
-    <div>
+    <div class="flex flex-col md:flex-row">
         <div class="bg-yellow-300 w-full">
             <h1 class="text-4xl text-center p-4 font-bold">
                 About The Noob
             </h1>
-            <p class="px-5 py-4 text-xl leading-10 font-base">
-                Lovely day to you! I'm Ishan, a 18 year old student from India.
-                A self taught programmer and a full stack web developer, I'm 
-                currently looking into the world of machine learning and AI.
-                Other then that, you might find me lurking on the internet, 
-                reading interesting books, keeping up with the latest tech news 
-                or playing with my lovely German Shepherd Dog (It's called Lyka in case 
-                you were wondering). However, before I go on and on about myself, 
-                if you mostly interested in my professional skills, please head over to my
-                Skills page.
+            <p class="px-5 py-2 text-xl leading-10 font-base">
+                Hope you are having a great day! I am Ishan and I am a student and tech enthusiast from India.
+                I am currently pursuing a B.Tech in Computer Science and Engineering from GRIET, Hyderabad.
+                I am a big fan of open source and I love to contribute to open source projects. All of my projects are open source and you can find them on my
+                <a class="underline" href="/projects">Projects</a>.
+                Linux and Python Guy, currently using Windows and JavaScript, but they are okay.
             </p>
-            <p class="px-5 py-4 text-xl leading-10 font-base">
-                I'm currently a student at GRIET, pursuing a B.Tech in 
-                Computer Science and Engineering. It's in 
-                Hyderabad, India and Hyderabad's a pretty cool place to 
-                live in. Anyways, I'm a pretty chill guy and I love to 
-                talk about tech, so if you want to talk about anything, 
-                feel free to connect with me. I started programming when I was 
-                16 and I've been doing it ever since. Python was the first language 
-                I learnt, but I've been working with JavaScript and React for the 
-                past year. I'm also a big fan of open source and I love to contribute 
-                to open source projects. All of my projects are open source and 
-                you can find them on my Projects page.
+            <p class="px-5 py-2 text-xl leading-10 font-base">
+                I love using and trying out new technologies and I am always looking for new things to learn.
+                When I am not coding, I like to talk long walks, listen to music, watch movies and TV shows, and play video games.
+                I am also a dog person and my dog Lyka, is wonderful.
+                Anyways, I don't want to bore you with my life story, so I will end it here.
+                I am quite an open person, so if you want to talk to me, contact me!
             </p>
+            <div class="text-center p-4"> 
+                <button class="w-full btn bg-blue-300">
+                    <a href="/contact">Contact Me</a>
+                </button>
+            </div>
+        </div>
+        <div class="justify-center items-center md:block">
+            <img class="w-full md:w-80" src="/assets/lyka.webp" width={420} alt="">
         </div>
     </div>
 </Normal>

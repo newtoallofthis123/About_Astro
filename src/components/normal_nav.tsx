@@ -13,13 +13,13 @@ export default function NormalNav() {
                             <img
                                 width={192}
                                 height={192}
-                                className="w-10 h-10"
+                                className="w-10 h-10 md:w-12 md:h-12"
                                 src="/logo192.webp"
                                 alt="NoobScience Logo"
                             />
                             <a
                                 href="/"
-                                className=" px-5 nav-title font-bold uppercase text-center text-4xl no-underline"
+                                className="px-5 nav-title font-bold uppercase text-center text-4xl md:text-5xl no-underline"
                             >
                                 NoobScience
                             </a>

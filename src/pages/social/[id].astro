@@ -1,8 +1,34 @@
 ---
-import data from "./data.json"
+import data from "./_data.json"
 const {id} = Astro.params
 // @ts-ignore
 const link:any = data[id]
-if(link) return Astro.redirect(link)
-else return Astro.redirect("/404")
+if(!link) return Astro.redirect("/404")
+import Normal from "../../layouts/normal.astro"
 ---
+
+<Normal title={id + " | Ishan's Links"}>
+    <div class="text-center">
+        <h1 class="text-5xl font-bold p-4 pt-8">
+            Redirecting to
+        </h1>
+        <h1 class="text-2xl font-bold p-4">
+            <a id="link" href={link} class="text-blue-500 underline">{link}</a>
+        </h1>
+        <h1 class="text-2xl font-bold p-4">
+            in <span id="time"></span> seconds
+        </h1>
+    </div>
+</Normal>
+<script>
+    let time = 10
+    setInterval(() => {
+        time--
+        //@ts-ignore
+        document.getElementById("time").innerText = time
+        if(time == 0) {
+            //@ts-ignore
+            document.getElementById("link").click()
+        }
+    }, 1000)
+</script>
