@@ -5,7 +5,7 @@ const {id} = Astro.params
 ---
 
 <Normal title={id + " | Ishan's Notes"}>
-  <Note hash={id} client:load />
+  <Note hash={id} client:visible />
 </Note>
 <style is:inline>
     h1{
