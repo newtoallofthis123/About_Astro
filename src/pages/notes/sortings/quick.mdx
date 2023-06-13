@@ -1,0 +1,104 @@
+---
+title: "Quick Sort"
+layout: "../../../layouts/md.astro"
+author: "NoobScience"
+date: "2023-05-12"
+---
+
+Quick sort is one the more efficient algorithms that is used to sort mostly integer based entries. 
+In quick sort, a array is divided into indivisual elements using a pivot element and all the entries are thus sorted using the pivot element. It is a divide and conquer algorithm, similar to merge sort. It partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted. 
+
+## Implementation
+python
+
+```python
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+
+    return quick_sort(left) + middle + quick_sort(right)
+
+```
+
+Granted this is a little easy in python using recursion and list comprehension.
+
+c
+
+```c
+#include <stdio.h>
+
+void quick_sort(int arr[], int left, int right) {
+    if (left < right) {
+        int pivot = arr[(left + right) / 2];
+        int i = left;
+        int j = right;
+        while (1) {
+            while (arr[i] < pivot){
+                i++;
+            }
+            while (arr[j] > pivot){
+                j--;
+            }
+            if (i >= j) {
+                break;
+            }
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        quick_sort(arr, left, j);
+        quick_sort(arr, j + 1, right);
+    }
+}
+
+int main() {
+    int arr[] = { 3, 5, 1, 2, 6, 4, 8, 7 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    quick_sort(arr, 0, n - 1);
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+```
+
+## Time and Space Complexity 
+
+ With a randomized pivot selection, the expected time complexity of Quick Sort is O(n log n) for all inputs. Hence this too is a stable sorting algorithm. Since the pivot too is randomized, the space complexity of the algorithm is also O(n log n)
+This makes the quick sort algorithm have real world applications.
+
+
+## How It Works
+Consider the input array: `arr[] = { 6, 4, 7, 2, 1, 9, 5 }`. We will trace the steps of the algorithm as it sorts this array in ascending order.
+
+1. Call `quick_sort(arr, 0, 6)`. This is the initial call to the `quick_sort` function with the entire input array and the left and right indices set to `0` and `6`, respectively.
+  
+2. Calculate the pivot index as `(left + right) / 2 = (0 + 6) / 2 = 3`. The pivot element is `arr[3] = 2`.
+  
+3. Partition the array around the pivot element using the Hoare partition scheme:
+  
+  - Initialize two indices `i` and `j` to `left - 1` and `right + 1`, respectively.
+  - Increment `i` until `arr[i] >= pivot`, and decrement `j` until `arr[j] <= pivot`. Swap `arr[i]` and `arr[j]` if `i < j`.
+  - Repeat the previous step until `i >= j`.
+  - After the partition, the left sub-array contains elements less than or equal to the pivot, and the right sub-array contains elements greater than the pivot. In this case, the partition results in the array: `{ 2, 1, 4, 5, 6, 9, 7 }`.
+  - The pivot element is now in its final sorted position, between the left and right sub-arrays.
+4. Recursively call `quick_sort(arr, left, j)` and `quick_sort(arr, j + 1, right)`.
+  
+  - `quick_sort(arr, 0, 2)`:
+    - Calculate the pivot index as `(left + right) / 2 = (0 + 2) / 2 = 1`. The pivot element is `arr[1] = 1`.
+    - Partition the sub-array `{ 2, 1, 4 }` around the pivot element. The partition results in the array: `{ 1, 2, 4 }`.
+    - Recursively call `quick_sort(arr, 0, 0)` and `quick_sort(arr, 2, 2)`. These calls are no-ops since the sub-arrays have only one element each.
+  - `quick_sort(arr, 4, 6)`:
+    - Calculate the pivot index as `(left + right) / 2 = (4 + 6) / 2 = 5`. The pivot element is `arr[5] = 9`.
+    - Partition the sub-array `{ 9, 6, 7, 5 }` around the pivot element. The partition results in the array: `{ 5, 6, 7, 9 }`.
+    - Recursively call `quick_sort(arr, 4, 4)` and `quick_sort(arr, 6, 6)`. These calls are no-ops since the sub-arrays have only one element each.
+5. The algorithm completes and the sorted array is `{ 1, 2, 4, 5, 6, 7, 9 }`.
+  
+
+Note that the pivot element is chosen based on its index, rather than its value. If multiple elements have the same value, the pivot element can be chosen randomly to ensure the average time complexity of O(n log n) for all inputs.

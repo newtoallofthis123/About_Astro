@@ -12,7 +12,7 @@ export default defineConfig({
   markdown: {
     gfm: true,
     shikiConfig: {
-      theme: 'dracula',
+      theme: 'dracula-soft',
       langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'sh', 'yaml', 'yml', 'graphql', 'md', 'mdx'],
       wrap: true
     },

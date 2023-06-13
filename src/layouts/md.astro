@@ -18,7 +18,11 @@ const { frontmatter }= Astro.props;
             }</h2>
         <div class="flex flex-col justify-center items-center pb-5">    
             <div class="w-5/6 p-2">
-                <img class="rounded-md" src={frontmatter.image} alt="Blog Header">
+                {
+                    frontmatter.image && (
+                        <img class="rounded-md" src={frontmatter.image} alt="Blog Header">
+                    )
+                }
             </div>
             <div class="w-full px-4 pb-2 md:p-0 md:w-4/5">
                 <slot />

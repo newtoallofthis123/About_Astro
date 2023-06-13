@@ -1,0 +1,78 @@
+---
+title: "Counting Sort"
+layout: "../../../layouts/md.astro"
+author: "NoobScience"
+date: "2023-05-12"
+---
+
+## Implementation of Counting Sort in C
+
+```c
+#include <stdio.h>
+
+#define RANGE 100
+
+void countingSort(int arr[], int n) {
+    int count[RANGE + 1] = {0};
+    int output[n];
+    int i;
+
+    for (i = 0; i < n; i++)
+        count[arr[i]]++;
+
+    for (i = 1; i <= RANGE; i++)
+        count[i] += count[i - 1];
+
+    for (i = n - 1; i >= 0; i--) {
+        output[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
+    }
+
+    for (i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+
+void printArray(int arr[], int n) {
+    int i;
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {4, 2, 2, 8, 3, 3, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array: ");
+    printArray(arr, n);
+
+    countingSort(arr, n);
+
+    printf("Sorted array: ");
+    printArray(arr, n);
+
+    return 0;
+}
+
+```
+
+1. The Counting Sort algorithm assumes that the input consists of integers within a specific range. In this implementation, we assume the range to be from 0 to 100 (`RANGE`).
+  
+2. The algorithm begins by creating a count array, `count[RANGE + 1]`, and initializing all its elements to 0. This count array will be used to store the count of each element in the input array.
+  
+3. Next, the algorithm iterates over the input array and increments the count of each element in the count array. This step determines how many times each element appears in the input array.
+  
+4. After counting the elements, the algorithm modifies the count array to store the cumulative count. Each element in the count array represents the number of elements less than or equal to the current index.
+  
+5. Then, the algorithm creates an output array of the same size as the input array.
+  
+6. The algorithm iterates over the input array in reverse order. For each element, it looks up its count in the count array and uses that count to determine its correct position in the output array.
+  
+7. After placing an element in its correct position in the output array, the algorithm decrements the count of that element in the count array. This step ensures that if there are multiple occurrences of the same element, they are placed correctly in the sorted output array.
+  
+8. Once all elements have been placed in their correct positions, the algorithm copies the elements from the output array back to the original input array. Now, the original array contains the sorted elements.
+  
+9. Finally, the algorithm completes, and the sorted array is ready to be used or printed.
+  
+
+Counting Sort is an efficient sorting algorithm for sorting integers with a limited range. It has a time complexity of O(n + k), where n is the number of elements in the input array and k is the range of input values. Since Counting Sort does not involve any comparisons between elements, it can be faster than comparison-based sorting algorithms like QuickSort or MergeSort in certain situations. However, it requires additional space proportional to the range of input values, which can be a limitation for large ranges.

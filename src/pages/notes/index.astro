@@ -1,13 +1,31 @@
 ---
 import Normal from "../../layouts/normal.astro"
-import NoteArchive from "../../components/notes/archive"
+let notes:any = await Astro.glob("./*/*.mdx");
 ---
 
 <Normal title="Notes">
     <h1 class="text-center p-4 text-4xl font-bold">
         Some of My Notes
     </h1>
-    <div class="m-20 mt-10">
-        <NoteArchive num={15} client:load />
+    <div class="flex flex-col justify-center items-center">
+        {
+            notes.map((note:any) => (
+                <>
+                    <div
+                    onclick={"window.location.href = '" + note.url + "';"}                    
+                    class="p-4 border-2 border-gray-400 rounded-md m-2 md:m-4 mx-5 w-5/6 md:w-1/2 cursor-pointer">
+                        <a href={note.url} class="text-2xl font-semibold">
+                            {note.frontmatter.title}
+                        </a>
+                        <p class="pt-3 text-gray-800">
+                            {note.frontmatter.description}
+                        </p>
+                        <p class="text-gray-500 pt-3">
+                            {new Date(note.frontmatter.date).toDateString()}
+                        </p>
+                    </div>
+                </>
+            ))
+        }
     </div>
 </Normal>

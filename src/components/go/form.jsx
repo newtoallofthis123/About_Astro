@@ -32,7 +32,7 @@ export default function GoForm() {
                         </h2>
                         <input
                             type="text"
-                            className="w-3/5 p-5 border-2 border-black text-xl rounded-md my-5"
+                            className="w-3/5 md:w-2/3 p-5 border-2 border-black text-xl rounded-md my-5"
                             name="url"
                         />
                         <p></p>

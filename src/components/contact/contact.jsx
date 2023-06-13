@@ -23,7 +23,7 @@ export default function Form() {
                     Contact The Noob
                 </h1>
                 <div>
-                    <div className='mt-0 pt-4 p-10'>
+                    <div className='mt-0 pt-4 p-4 md:p-10'>
                         <h2>
                             <span className='text-2xl font-base'>Enter Your Name:</span>{' '}
                         </h2>
