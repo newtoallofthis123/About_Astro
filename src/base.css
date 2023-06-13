@@ -7,8 +7,8 @@
 }
 
 .btn {
-    background: currentColor;
-    color: currentColor;
+    background-color: inherit;
+    color: inherit;
     padding: 0.6em 1.3em;
     cursor: pointer;
     font-weight: 700;
