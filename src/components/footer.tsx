@@ -2,11 +2,12 @@ import React from 'react';
 
 export default function Footer() {
     const [footer, setFooter] = React.useState(false)
-    const [show, setShow] = React.useState(false)
+    const [show, setShow] = React.useState(true)
     React.useEffect(() => {
         if (typeof window !== 'undefined') {
             if (window.innerWidth > 1028) {
                 setFooter(true)
+                setShow(false)
             }
         }
     }, [])
@@ -47,11 +48,11 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    {!footer && (
+                    {show && (
                         <div className="text-center">
                             <button
                                 onClick={() => {
-                                    setShow(!show);
+                                    setFooter(!footer)
                                 }}
                                 className="text-center underline text-lg p-2"
                             >
@@ -59,8 +60,7 @@ export default function Footer() {
                             </button>
                         </div>
                     )}
-                    {footer ||
-                        (show && (
+                    {footer && (
                             <>
                                 <div className="w-full flex md:justify-center items-center flex-row md:w-2/6">
                                     <div className="flex flex-col md:flex-row">
@@ -229,7 +229,7 @@ export default function Footer() {
                                     </p>
                                 </div>
                             </>
-                        ))}
+                        )}
                 </div>
             </footer>
         </>
