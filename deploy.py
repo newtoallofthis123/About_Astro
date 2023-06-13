@@ -74,13 +74,7 @@ def main():
         (os.system("clear") if os.name == "posix" else os.system("cls"))
         Console().print(pyfiglet.figlet_format("Deployment Helper v1.0"), style="bold blue")
         Console().print(Panel.fit("Hi NoobScience! Did you call the deployer?"), style="bold blue")
-        deploy_choice = Prompt.ask("Answer the deployer's question")
-        if deploy_choice == "yes deployer I did call you":
-            deploy()
-        elif deploy_choice == "":
-            Console().print("You didn't answer the deployer's question. He is angry and is not going to deploy the website.")
-        else:
-            Console().print("The Deployer rejected your request. He says you are not worthy of deploying the website.")
+        deploy()
     else:
         print("Wrong password")
 
