@@ -1,13 +1,24 @@
 ---
 import BlogNav from '../components/blog_nav';
 import Base from './base.astro';
-const { frontmatter }= Astro.props;
+const { frontmatter: frontmatter }= Astro.props;
+import { themes } from '../pages/blog/themes';
+//@ts-ignore
+const theme = themes[frontmatter.theme] || themes['default'];
+const posts = await Astro.glob('../pages/blog/*/*.mdx');
+const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title);
 ---
 
 <Base title={frontmatter.title + " | Ishan Writes"}>
     <BlogNav client:load />
+    <style define:vars={{color: theme.color, bg: theme.background}}>
+        #main{
+            color: var(--color);
+            background-color: var(--bg);
+        }
+    </style>
     <main>
-        <div class="p-5">
+        <div id="main" class="p-5">
             <h1 class="text-center p-5 font-bold text-6xl">{frontmatter.title}</h1>
             {
                 frontmatter.author && (
@@ -23,7 +34,7 @@ const { frontmatter }= Astro.props;
             <h2 class="text-lg font-light text-center p-2">
                 {frontmatter.wordsRead} words | Avg {frontmatter.minutesRead}
             </h2>
-            <div class="flex flex-col justify-center items-center pb-5">    
+            <div class="flex flex-col justify-center items-center pb-2">    
                 <div class="w-5/6 p-5">
                     {
                         frontmatter.image && (
@@ -31,9 +42,11 @@ const { frontmatter }= Astro.props;
                         )
                     }
                 </div>
-                <div class="w-full px-4 pb-2 md:p-0 md:w-4/5">
-                    <slot />
-                </div>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center items-center p-5">
+            <div class="w-full px-4 pb-2 md:p-0 md:w-4/5">
+                <slot />
             </div>
         </div>
                     {
@@ -47,6 +60,44 @@ const { frontmatter }= Astro.props;
                     </div>
                 )
             }
+        <div>
+            {
+                recommended.length > 0 && (
+                    <div>
+                        <h1 class="text-2xl text-center font-bold pt-2">
+                        You might also like
+                        </h1>
+                        <div class="flex border-gray-500 flex-col md:mx-10 p-2 md:px-10 cursor-pointer justify-center items-center">
+                            {
+                                recommended.map((post:any) => (
+                                    <div  
+                                    onclick={
+                                        "location.href = '" + post.url + "'"
+                                    }
+                                    class="flex flex-row justify-center items-center px-5 py-2">
+                                        <div class="w-2/6">
+                                            <img class="rounded-md" src={post.frontmatter.image} alt="Blog Header">
+                                        </div>
+                                        <div class="pl-10 w-4/6">
+                                            <h2 class="text-2xl font-bold p-2">{post.frontmatter.title}</h2>
+                                            <p class="text-lg font-light p-2">
+                                                {post.frontmatter.description}
+                                            </p>
+                                            <p class="text-lg font-light p-2">
+                                                {new Date(post.frontmatter.date).toDateString()} | Avg {post.frontmatter.minutesRead}
+                                            </p>
+                                            <a href={post.url} class="text-lg font-light p-2 underline">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                )
+            }
+        </div>
         <footer class="text-center p-5 border-black border-t-2">
             <h1 class="font-bold text-2xl"> 
                 &copy NoobScience {new Date().getFullYear()}
@@ -93,5 +144,16 @@ const { frontmatter }= Astro.props;
         line-height: 2.5rem;
         list-style-type: decimal;
         padding-left: 1.2rem;
+    }
+    blockquote{
+        line-height: 2.5rem;
+        padding: 1rem 0;
+        margin: 1rem 0;
+        border-left: 2px solid #000;
+        padding-left: 1rem;
+    }
+    blockquote>p{
+        font-size: 1.4rem;
+        font-style: italic;
     }
 </style>

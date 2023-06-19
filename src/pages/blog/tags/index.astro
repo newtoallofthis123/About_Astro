@@ -1,6 +1,6 @@
 ---
 import Blog from '../../../layouts/blog.astro';
-let posts: any = await Astro.glob('../*.mdx');
+let posts: any = await Astro.glob('../*/*.mdx');
 const tags:any[] = []
 posts = posts.map((post: any) => {
     const { tags: postTags } = post.frontmatter

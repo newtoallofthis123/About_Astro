@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import Blog from "../../layouts/blog.astro";
-let posts:any = await Astro.glob("./*.mdx");
+let posts:any = await Astro.glob("./*/*.mdx");
 posts = posts.filter((post:any) => {
     return !post.frontmatter.draft;
 });
@@ -20,7 +20,12 @@ posts = posts.sort((a:any, b:any) => {
                 return (
                     <div class="flex flex-row p-4 border-gray-400 border-b-2">
                         <div>
+                            {
+                                post.frontmatter.image && (
                             <img class="rounded-md" width={256} src={post.frontmatter.image} alt="Blog Image">
+
+                                )
+                            }
                         </div>
                         <div class="p-4">
                             <a href={post.url} class="text-2xl font-bold">

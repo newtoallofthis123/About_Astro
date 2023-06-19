@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import vercel from "@astrojs/vercel/serverless";
 import remarkHtml from 'remark-html';
+import remarkRehype from 'remark-rehype'
 import { remarkReadingTime } from './remark-reading-time.mjs';
 
 // https://astro.build/config
@@ -12,7 +13,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   markdown: {
-    remarkPlugins: [remarkHtml, remarkReadingTime],
+    remarkPlugins: [remarkHtml, remarkReadingTime, remarkRehype],
     gfm: true,
     shikiConfig: {
       theme: 'monokai',
