@@ -7,15 +7,19 @@ const { frontmatter }= Astro.props;
 
 <Base title={frontmatter.title + " | Noobites"}>
     <NormalNav client:load />
-    <div class="p-5">
+    <div class="p-5 dark:bg-gray-800 dark:text-white">
         <h1>{frontmatter.title}</h1>
-        <h2 class="text-lg font-light text-center pt-2">Written by {frontmatter.author} on {
+        {
+            frontmatter.author && (
+            <h2 class="text-lg font-light text-center pt-2">Written by {frontmatter.author} on {
             new Date(frontmatter.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             })
             }</h2>
+            )
+        }
         <div class="flex flex-col justify-center items-center pb-5">    
             <div class="w-5/6 p-2">
                 {
@@ -32,25 +36,29 @@ const { frontmatter }= Astro.props;
     <Footer client:idle />
 </Base>
 <style is:inline>
+    ::selection{
+        background-color: #d2d2d2;
+        color: #000;
+    }
     h1{
-        font-size: 4rem;
+        font-size: 3.2rem;
         text-align: center;
         font-weight: 700;
         line-height: 4rem;
     }
     h2,h3{
         font-weight: 700;
-        padding: 0.5rem 0;
-        line-height: 3.6rem;
+        padding: 0.25rem 0;
+        line-height: 3.2rem;
     }
     h2{
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     h3{
         font-size: 1.25rem;
     }
     p{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         padding: 0.5rem 0;
         line-height: 2rem;
     }
@@ -66,6 +74,7 @@ const { frontmatter }= Astro.props;
         font-size: 1.2rem;
     }
     ol{
+        font-size: 1.2rem;
         list-style: decimal;
         padding-left: 1rem;
     }

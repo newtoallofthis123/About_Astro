@@ -2,14 +2,27 @@ import React from "react";
 import "./styles/nav.scss";
 import { motion } from "framer-motion";
 
-export default function NormalNav() {
+const default_options = [
+    'about',
+    'blog',
+    'projects',
+    'skills',
+    'resume',
+    'updates',
+    'contact',
+    'github',
+    'social',
+    'notes',
+];
+
+export default function NormalNav({ options = default_options, title="NoobScience" }) {
     const [nav, setNav] = React.useState(false);
     return (
         <>
             <nav>
-                <div id="nav">
-                    <div className="flex flex-row border-y-4 border-black justify-between items-center p-5">
-                        <div className="flex-shrink-0 flex flex-row justify-around"> 
+                <div className="dark:bg-gray-950 dark:text-white" id="nav">
+                    <div className="flex flex-row border-y-2 border-black dark:border-white justify-between items-center p-5">
+                        <div className="flex-shrink-0 flex flex-row justify-around">
                             <img
                                 width={192}
                                 height={192}
@@ -21,7 +34,7 @@ export default function NormalNav() {
                                 href="/"
                                 className="px-5 nav-title font-bold uppercase text-center text-4xl md:text-5xl no-underline"
                             >
-                                NoobScience
+                                {title}
                             </a>
                         </div>
                         <ul
@@ -32,18 +45,7 @@ export default function NormalNav() {
                         lg:flex flex-row p-5 justify-center border-black
                         "
                         >
-                            {[
-                                'about',
-                                'blog',
-                                'projects',
-                                'skills',
-                                'resume',
-                                'updates',
-                                'contact',
-                                'github',
-                                'social',
-                                'notes',
-                            ].map((link) => (
+                            {options.map((link) => (
                                 <li key={link} className="text-3xl">
                                     <a
                                         href={`/${link}`}
@@ -64,42 +66,31 @@ export default function NormalNav() {
                                     rotateZ: nav ? 45 : 0,
                                     y: nav ? 8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-black dark:bg-white"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     opacity: nav ? 0 : 1,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-black dark:bg-white"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     rotateZ: nav ? -45 : 0,
                                     y: nav ? -8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-black dark:bg-white"
                             ></motion.span>
                         </div>
                         {nav && (
                             <motion.div
-                                className="fixed flex bg-white bottom-0 left-0 w-full h-screen items-center justify-center"
+                                className="fixed flex bg-white dark:bg-black bottom-0 left-0 w-full h-screen items-center justify-center"
                                 animate={{ opacity: 1, x: 0 }}
                                 initial={{ opacity: 0, x: 25 }}
                                 transition={{ duration: 0.5 }}
                             >
                                 <ul className="flex flex-col gap-4">
-                                    {[
-                                        'about',
-                                        'blog',
-                                        'projects',
-                                        'skills',
-                                        'resume',
-                                        'updates',
-                                        'contact',
-                                        'github',
-                                        'social',
-                                        'notes',
-                                    ].map((link) => (
+                                    {options.map((link) => (
                                         <li key={link} className="text-2xl">
                                             <a
                                                 href={`/${link}`}

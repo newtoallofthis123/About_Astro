@@ -35,7 +35,7 @@ export default function Update({ hash }: Props) {
                 <h1 className="text-center p-4">Loading...</h1>
             )}
             {latest.name != '' && (
-                <div className="bg-white m-2 md:mx-10 mt-0 p-2 md:p-10">
+                <div className=" m-2 md:mx-10 mt-0 p-2 md:p-10">
                     <h1 className="md:text-4xl text-3xl text-center py-4 pt-0 font-bold">
                         {latest.name}
                     </h1>

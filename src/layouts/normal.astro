@@ -10,6 +10,8 @@ const {title}= Astro.props
 
 <Base title={title}>
     <NormalNav client:load />
-    <slot />
+    <div class="dark:bg-gray-900 dark:text-white">
+        <slot />
+    </div>
     <Footer client:idle />
 </Base>

@@ -1,52 +1,106 @@
 ---
 export const prerender = true;
-import Normal from "../../layouts/normal.astro";
+import Blog from "../../layouts/blog.astro";
 let posts:any = await Astro.glob("./*.mdx");
+posts = posts.filter((post:any) => {
+    return !post.frontmatter.draft;
+});
 posts = posts.sort((a:any, b:any) => {
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
 });
 ---
 
-<Normal title="NoobScience Random">
-    <div class="p-4">
-        <h1 class="text-4xl font-bold text-center">
-            Noobites
-        </h1>
-        <p class="p-2 pt-4 mx-5 md:mx-20 text-xl leading-10">
-            Small little posts that I write about random things that I find interesting.
-            They are not long enough to be a blog post, but I still want to share them.
-            Okay, to be honest, I built this using <a class="underline" href="https://astro.build">Astro</a>
-            and hey, Astro has support for markdown files, so why not?
-            So, here are some random posts that I have written.
-            If you want the actual blog posts, I post regularly on hashnode and substack
-        </p>
-        <div class="text-center">
-            <button class="btn bg-yellow-400 text-2xl mx-4"><a href="/social/blog">Hashnode</a></button>
-            <button class="btn bg-yellow-400 text-2xl mx-4"><a href="https://noobscience.substack.com">Substack</a></button>
-        </div>
-        <div>
-            <h1 class="text-center text-3xl p-4 md:p-8 font-bold">
-                All the posts
+<Blog title="Ishan Writes">
+    <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-4/6">
+            <h1 class="text-center text-2xl md:text-4xl p-4 md:p-8 font-bold">
+                I have a <span>lot</span> of thoughts
             </h1>
-            <div class="flex justify-center items-center">
-                {
-                posts.map((post:any) => (
-                    <div
-                    onclick={"window.location.href = '" + post.url + "';"}                    
-                    class="p-4 border-2 border-gray-400 rounded-md m-2 md:m-4 mx-5 w-5/6 md:w-1/2 cursor-pointer">
-                        <a href={post.url} class="text-2xl font-semibold">
-                            {post.frontmatter.title}
-                        </a>
-                        <p class="pt-3 text-gray-800">
-                            {post.frontmatter.description}
+            <div class="flex flex-col justify-center items-center">
+                <div class="w-full md:w-4/5">
+                    <p class="text-xl">
+                        <span class="text-2xl md:text-3xl text-red-500">A</span>nd I need an outlet
+                    </p>
+                    <div class="py-8">
+                        <p>
+                            Hi! I am a Ishan and I am a 19 year old self taught developer from India. You can know more about me from my <a href="/about">About</a> section.
+                            Anyways, putting all of that aside, welcome to my blog, Ishan Writes. Well, I know the name is quite simple, but I love simplicity.
+                            The site design itself is inspired by <a href="https://www.nytimes.com">NYTimes</a>, one of the best designs I have ever seen.
+                            I mean, it is a fusion. I always wanted a blog, one I made on my own, so here it is. The blog itself is written in <a href="https://astro.build">Astro</a> and uses <a href="https://tailwindcss.com">TailwindCSS</a> for styling.
                         </p>
-                        <p class="text-gray-500 pt-3">
-                            {new Date(post.frontmatter.date).toDateString()}
+                        <p>
+                            This blog is a subsidiary of my main site and is hosted on <a href="https://vercel.com">Vercel</a>.
+                            You can expect the writing style to be simple and casual. I am not a professional writer, so I will write as I speak.
+                            You can also expect a lot terms and phrases from the programming world and the GenZ world.
+                            I will try to keep the posts as short as possible, but I will not compromise on the content.
+                            Blogging has always been a favourite of mine.
+                        </p>
+                        <p>
+                            This blog will mostly have technical posts, but I will also write about my life and my experiences.
+                            So, stay tuned for that. I will also try to post as frequently as possible, but I am a student, so I cannot promise anything :)
                         </p>
                     </div>
-                ))
+                    <div>
+                        <p>
+                            {posts.length} posts so far! Check them all out.
+                        </p>
+                        <h2 class="text-2xl font-bold py-4">
+                            AI and Citations
+                        </h2>
+                        <p>
+                            This site uses a little help from LLM's to generate the intoduction and TLDR.
+                            Moreover, most of the images are AI generated as well. However, most of the content is written by me.
+                            One more thing, I am not a native English speaker, so please excuse any grammatical errors you might find.
+                            All the content is licensed under the <a href="https://mit-license.org">MIT License</a>.
+                            You are free to use the content as you wish, but please cite the source or link back to this site.
+                            This is not a legal requirement, but it would be nice if you did. Moreover, this site should be considered as a subsidiary of my main site.
+                            Here are the <a href="/i/tos">Terms of Use</a>.
+                        </p>
+                        <div class="py-4 flex flex-row flex-wrap items-center gap-x-5">
+                            <img src="/assets/not_ai.svg" alt="Not an AI">
+                            <img src="/assets/mit.svg" alt="MIT License">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+        class="w-full md:w-2/6 p-4 my-4 border-l-2 cursor-pointer border-gray-200">
+            <p class="text-center text-sm p-1">
+                Latest Post (clicky clicky)
+            </p>
+            <div>
+                {
+                    posts.map((post:any, index:number) => {
+                        if (index > 3) return;
+                        return (
+                            <div 
+                            onclick={
+                                "location.href = '" + post.url + "'"
+                            }
+                            class="border-gray-200 border-b-2"
+                            >
+                                <div class="text-center py-4">
+                                    <img src={
+                                        post.frontmatter.image
+                                    } class="w-full" alt="">
+                                </div>
+                                <h2 class="text-center text-2xl">
+                                    {post.frontmatter.title}
+                                </h2>
+                                <p class="text-center text-sm p-2">
+                                    By {post.frontmatter.author} on {new Date(post.frontmatter.date).toLocaleDateString()} | Avg {post.frontmatter.minutesRead}
+                                </p>
+                            </div>
+                        )
+                    }
+                    )
                 }
+            </div>
+            <div class="p-2 flex flex-col justify-center items-center">
+                <h2 class="p-4 text-lg">Subscribe to my Newsletter</h2>
+                <iframe src="https://noobscience.substack.com/embed" class="rounded-md bg-white" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </div>
-</Normal>
+</Blog>

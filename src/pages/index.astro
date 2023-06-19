@@ -2,13 +2,16 @@
 import Home from "../layouts/home.astro"
 import UpdateLatest from "../components/updates/latest";
 import UpdateArchive from "../components/updates/archive";
-import NoteArchive from "../components/notes/archive";
+let posts:any = await Astro.glob("./blog/*.mdx");
+posts = posts.sort((a:any, b:any) => {
+    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+});
 ---
 
 <Home>
 	<div>
 		<div class="flex flex-col md:flex-row">
-			<div class="w-full md:w-1/2 bg-yellow-400">
+			<div class="w-full md:w-1/2 bg-yellow-400 dark:bg-yellow-200">
 				<h1 class="text-center p-4 md:p-8 text-4xl md:text-6xl font-semibold">
 					Meet The Noob
 				</h1>
@@ -39,13 +42,13 @@ import NoteArchive from "../components/notes/archive";
 				</h1>
 			</div>
 		</div>
-		<div class="flex flex-col justify-center items-center w-full bg-green-400">
+		<div class="flex flex-col justify-center items-center w-full bg-green-400 dark:bg-green-300">
 			<h1 class="p-4 text-4xl font-bold">
 				What's Up
 			</h1>
 			<UpdateLatest client:idle />
 		</div>
-		<div class="flex flex-col md:flex-row">
+		<div class="flex flex-col dark:bg-gray-800 dark:text-white md:flex-row">
 			<div class="w-full md:w-4/6">
 				<div class="text-lg p-5 leading-8 pl-10">
 					<h1 class="text-4xl text-center p-4 font-bold">
@@ -71,8 +74,8 @@ import NoteArchive from "../components/notes/archive";
 
 					</p>
 				</div>
-				<div class="flex flex-col border-t-2 mt-3 border-black md:flex-row">
-					<div class="w-full bg-violet-300 md:w-3/5">
+				<div class="flex flex-col border-t-2 mt-3 border-black dark:border-white md:flex-row">
+					<div class="w-full dark:text-black bg-violet-300 md:w-3/5">
 						<h1 class="text-2xl text-center px-4 py-2 font-bold">
 							<i class="bi bi-circle-fill"></i> Bullets about me
 						</h1>
@@ -93,7 +96,7 @@ import NoteArchive from "../components/notes/archive";
 							</button>
 						</div>
 					</div>
-					<div class="w-full md:border-l-2 border-black p-2 md:pl-2 md:w-2/5">
+					<div class="w-full md:border-l-2 border-black dark:border-white p-2 md:pl-2 md:w-2/5">
 						<h1 class="text-center text-2xl pb-2 font-bold">
 							<i class="bi bi-chat-left-fill"></i> Site Updates
 						</h1>
@@ -109,7 +112,7 @@ import NoteArchive from "../components/notes/archive";
 			</div>
 			<div class="w-full bg-pink-400 md:w-2/6">
 				<div>
-					<div class="md:border-2 md:border-y-0 border-black">
+					<div class="md:border-2 md:border-y-0 dark:text-black border-black">
 						<h1 class="px-8 py-4 text-4xl font-bold">
 							Updates
 						</h1>
@@ -117,11 +120,26 @@ import NoteArchive from "../components/notes/archive";
 							<UpdateArchive num={6} client:idle />
 						</div>						
 					</div>
-					<div class="md:border-2 md:border-y-0 border-black">
+					<div class="md:border-2 dark:text-black md:border-y-0 border-black">
 						<h1 class="px-8 py-4 text-4xl font-bold">
-							Latest Notes
+							Latest Posts
 						</h1>
-						<NoteArchive num={4} client:idle />
+						<div>
+							{
+								posts.map((post:any) => (
+									<div class="pl-8 py-2">
+										<h1 class="text-xl font-base">
+											<a
+												class="underline"
+												href={`/updates/${post.slug}`}
+											>
+												{post.frontmatter.title}
+											</a>
+										</h1>
+									</div>
+								))
+							}
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,6 @@
 ---
 export const prerender = true
 import Normal from "../layouts/normal.astro";
-const url = Astro.url
 ---
 
 <Normal title="404 Resource Not Found">
@@ -11,15 +10,10 @@ const url = Astro.url
                 <h1 class="md:text-6xl text-3xl font-bold">
                     Resource Not Found
                 </h1>
-                <p class="p-8 text-xl">
-                    Hey My Guy! This is the URL you were looking for:
+                <p class="pt-8 pb-4 text-xl">
+                    Hey My Guy! The URL you were looking for doesn't exist.
                 </p>
-                <p class="text-xl">
-                    <span class="bg-red-400 p-2">
-                        {url}
-                    </span>
-                </p>
-                <p class="p-8 text-xl">
+                <p class="p-4 text-xl">
                     This site has a lot of resources, but this one isn't one of them.
                 </p>
                 <div>
