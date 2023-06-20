@@ -1,0 +1,45 @@
+---
+import Base from "../../layouts/base.astro"
+let posts = await Astro.glob("./*.mdx")
+posts = posts.sort((a:any, b:any) => {
+    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+});
+---
+
+<Base title="NoobScience Sups">
+    <div class="flex flex-col md:flex-row overflow-auto">
+        <div class="bg-white py-10 px-5 w-3/5">
+            <h1 class="text-4xl text-center p-5 font-bold">
+                Funny and Weird Pieces
+            </h1>
+            <p class="text-xl">
+                Yep. Just a place to hold some funny and weird pieces of content.
+                No styling, no complex layout.
+                Hope you enjoy them
+            </p>
+            <h2 class="text-2xl text-center font-bold p-2">
+                Archive of Sups
+            </h2>
+            <div>
+                {
+                    posts.map((post:any) => {
+                        return (
+                            <div class="text-center">
+                                <a href={post.url} class="text-xl">
+                                    ./sups/{post.frontmatter.title}
+                                </a>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
+    </div>
+</Base>
+<style is:inline>
+    body{
+        background: url("/assets/blog/images/laughing_sup.jpg");
+        background-size: cover;
+        /* background-position: center; */
+    }
+</style>

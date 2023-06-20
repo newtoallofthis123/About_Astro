@@ -1,0 +1,47 @@
+---
+export interface Props {
+  title: string;
+  frontmatter: any;
+}
+import Base from "./base.astro";
+const { frontmatter }= Astro.props;
+---
+
+<Base title={frontmatter.title + " | Sup"}>
+    <div>
+        <h1 class="md:text-5xl text-3xl font-bold text-center p-2 md:p-5">
+            {frontmatter.title}
+        </h1>
+        <h1 class="text-xl font-light text-center p-2">
+            Posted on {new Date(frontmatter.date).toDateString()}
+        </h1>
+        <div class="flex flex-wrap justify-center items-center">
+            <div class="p-5 w-full md:w-3/5">
+                <slot />
+            </div>
+        </div>
+    </div>
+</Base>
+<style is:inline>
+    h1{
+        font-size: 2.4rem;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    h3{
+        font-size: 1.8rem;
+    }
+    h1,h2,h3{
+        font-weight: 700;
+        padding: 0.5rem 0;
+    }
+    p{
+        font-size: 1.4rem;
+        line-height: 1.5;
+        padding: 0.5rem 0;
+    }
+    img{
+        border-radius: 12px;
+    }
+</style>
