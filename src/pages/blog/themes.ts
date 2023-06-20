@@ -2,15 +2,25 @@ export const themes = {
     ai: {
         color: 'white',
         background: 'black',
-        transparency: 0.5,
+        textColor: 'black',
+        textBackground: 'white',
     },
     default: {
         color: 'black',
         background: 'white',
-        transparency: 1,
+        textColor: 'black',
+        textBackground: 'white',
     },
     maths: {
         color: 'black',
-        background: '#06ff00',
+        background: 'white',
+        textColor: 'black',
+        textBackground: '#CEEFF9',
+    },
+    social: {
+        color: 'black',
+        background: '#eff425',
+        textColor: 'black',
+        textBackground: '#F9F9F9',
     },
 };

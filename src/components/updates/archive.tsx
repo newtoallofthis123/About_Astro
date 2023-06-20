@@ -38,14 +38,14 @@ export default function UpdateArchive({num}: Props) {
                 <div>
                     {latest.map((update: any) => (
                         <div key={update.hash} className="pl-8 py-2">
-                            <h1 className="text-xl font-base">
+                            <h4 className="text-lg font-base">
                                 <a
                                     className="underline"
                                     href={`/updates/${update.hash}`}
                                 >
                                     {update.name}
                                 </a>
-                            </h1>
+                            </h4>
                         </div>
                     ))}
                 </div>

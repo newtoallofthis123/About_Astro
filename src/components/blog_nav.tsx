@@ -8,7 +8,7 @@ export default function BlogNav() {
         <>
             <nav>
                 <div id="nav">
-                    <div className="flex flex-row justify-center items-center p-5">
+                    <div className="flex flex-row bg-black text-white justify-center items-center p-5">
                         <a
                             href="/blog"
                             className="
@@ -32,25 +32,25 @@ export default function BlogNav() {
                                     rotateZ: nav ? 45 : 0,
                                     y: nav ? 8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-white"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     opacity: nav ? 0 : 1,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-white"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     rotateZ: nav ? -45 : 0,
                                     y: nav ? -8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-white"
                             ></motion.span>
                         </div>
                         {nav && (
                             <motion.div
-                                className="fixed flex bg-white bottom-0 left-0 w-full h-screen items-center justify-center"
+                                className="fixed flex bg-black text-white bottom-0 left-0 w-full h-screen items-center justify-center"
                                 animate={{ opacity: 1, x: 0 }}
                                 initial={{ opacity: 0, x: 25 }}
                                 transition={{ duration: 0.5 }}
@@ -81,7 +81,7 @@ export default function BlogNav() {
                     <ul
                         className="
                         hidden gap-x-8
-                        lg:flex flex-row border-b-2 p-1 justify-center border-black
+                        lg:flex flex-row border-b-2 p-1 bg-black text-white justify-center border-white
                         "
                     >
                         {[
