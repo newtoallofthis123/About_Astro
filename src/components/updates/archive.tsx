@@ -41,7 +41,7 @@ export default function UpdateArchive({num}: Props) {
                             <h4 className="text-lg font-base">
                                 <a
                                     className="underline"
-                                    href={`/updates/${update.hash}`}
+                                    href={`/quips/${update.hash}`}
                                 >
                                     {update.name}
                                 </a>

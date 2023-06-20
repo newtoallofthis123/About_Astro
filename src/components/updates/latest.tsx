@@ -41,7 +41,7 @@ export default function UpdateLatest() {
                     className="page-div bg-white m-4 md:m-10 mt-0 p-4 md:p-10 cursor-pointer hover:translate-y-1"
                     onClick={() => {
                         typeof window !== 'undefined' &&
-                            window.open('/updates/' + latest.hash);
+                            window.open('/quips/' + latest.hash);
                     }}
                 >
                     <h1 className="text-2xl md:text-4xl text-center pb-4 font-bold">
