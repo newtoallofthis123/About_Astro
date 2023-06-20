@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/base.astro";
+const music_list = [
+    "https://www.youtube-nocookie.com/embed/nLnp0tpZ0ok",
+    "https://www.youtube-nocookie.com/embed/xbgHWCqaLZ8",
+    "https://www.youtube-nocookie.com/embed/xwjwCFZpdns",
+    "https://www.youtube-nocookie.com/embed/11FvEpWEASc",
+]
+---
+
+<Base title="Music | NoobScience">
+    <h1 class="text-5xl font-bold text-center p-5">
+        Noob's Music Choices
+    </h1>
+    <p class="text-center text-xl p-5">
+        I listen to a lot of music, and I mean a lot. I have a playlist for every mood, and I listen to music all the time. Here are some of my favorite songs.
+    </p>
+    <h2 class="text-3xl text-center p-3">
+        Playlist
+    </h2>
+    <div class="flex flex-col justify-center items-center">
+        <iframe width="100%" height="840" src="https://www.youtube-nocookie.com/embed/videoseries?list=PL1QxBqlyOFkXJoQFw--WK2B9GcMLDD6ka" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <h2 class="text-3xl font-bold text-center p-5">
+        Favorite Songs
+    </h2>
+    <div class="flex flex-wrap justify-center items-center">
+        {
+            music_list.map((music) => {
+                return (
+                    <div class="p-5">
+                        <iframe width="560" height="315" src={music} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                    
+                    </div>
+                )
+            })
+        }
+    </div>
+</Base>
