@@ -1,0 +1,26 @@
+---
+const {id} = Astro.params
+import Update from "../../components/updates/update";
+import Normal from "../../layouts/normal.astro";
+---
+
+<Normal title={id + " | Quips"}>
+    <Update hash={id} client:load/>
+</Normal>
+<style is:inline>
+    h1{
+        font-size: 2.5rem;
+    }
+    h2{
+        font-size: 1.8rem;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
+    h1,h2,h3{
+        font-weight: 700;
+    }
+    a{
+        text-decoration: underline;
+    }
+</style>

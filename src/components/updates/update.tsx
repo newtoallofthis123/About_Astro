@@ -39,7 +39,7 @@ export default function Update({ hash }: Props) {
                     <h1 className="md:text-4xl text-3xl text-center py-4 pt-0 font-bold">
                         {latest.name}
                     </h1>
-                    <h2 className="md:text-2xl text-center text-xl">{latest.date}</h2>
+                    <h2 className="md:text-2xl font-light text-center text-xl">{latest.date}</h2>
                     <div
                         className="text-xl md:pt-8 p-4 md:p-0 leading-10"
                         dangerouslySetInnerHTML={{

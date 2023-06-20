@@ -8,16 +8,16 @@ import UpdateLatest from "../../components/updates/latest";
   <div class="dark:bg-white dark:text-black flex flex-col lg:flex-row">
     <div class="w-full md:w-4/6 bg-yellow-300">
         <h1 class="text-center text-3xl md:text-4xl font-bold p-2 md:p-4">
-            Welcome to Updates!
+            Welcome to Quips!
         </h1>
         <p class="text-lg py-4 px-4 md:px-8">
-            Updates is my little corner on the internet where I share the most
+            Quips is my little corner on the internet where I share the most
             random things that come to my mind.
             So, with that being said, some of these posts may be a little
             personal, so, if you don't like that, you can just skip this page.
         </p>
         <h1 class="text-center p-4 text-2xl font-bold">
-            Latest Update
+            Latest Quip
         </h1>
         <div>
             <UpdateLatest client:idle />
@@ -25,7 +25,7 @@ import UpdateLatest from "../../components/updates/latest";
     </div>
     <div class="w-full md:w-2/6 bg-pink-400">
         <h1 class="text-4xl text-center p-4 font-bold">
-            Recent Updates
+            Recent Quips
         </h1>
         <UpdateArchive num={15} client:idle />
         <h1 class="text-center text-2xl bg-green-300 border-t-2 border-black mt-2">

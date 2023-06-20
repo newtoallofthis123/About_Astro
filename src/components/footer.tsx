@@ -140,10 +140,10 @@ export default function Footer() {
                                             Dynamic
                                         </h1>
                                         <a
-                                            href="/updates"
+                                            href="/quips"
                                             className="text-lg text-gray-600 no-underline hover:underline"
                                         >
-                                            Updates
+                                            Quips
                                         </a>
                                         <a
                                             href="/notes"

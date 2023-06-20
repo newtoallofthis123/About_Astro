@@ -30,6 +30,8 @@ export default defineConfig({
     redirects: true
   },
   redirects: {
-    '/pages/[id]': '/i/[id]'
+    '/pages/[id]': '/i/[id]',
+    '/updates/[id]': '/quips/[id]',
+    '/updates': '/quips'
   }
 });

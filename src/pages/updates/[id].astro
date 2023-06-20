@@ -1,9 +1,0 @@
----
-const {id} = Astro.params
-import Update from "../../components/updates/update";
-import Normal from "../../layouts/normal.astro";
----
-
-<Normal title={id + " | Ishan's Updates"}>
-    <Update hash={id} client:load/>
-</Normal>

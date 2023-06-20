@@ -8,7 +8,7 @@ const default_options = [
     'projects',
     'skills',
     'resume',
-    'updates',
+    'quips',
     'contact',
     'github',
     'social',
