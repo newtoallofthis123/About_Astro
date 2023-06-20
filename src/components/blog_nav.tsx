@@ -8,7 +8,7 @@ export default function BlogNav() {
         <>
             <nav>
                 <div id="nav">
-                    <div className="flex flex-row bg-black text-white justify-center items-center p-5">
+                    <div className="flex flex-row bg-black text-white border-b-2 border-white justify-center items-center p-5">
                         <a
                             href="/blog"
                             className="
@@ -81,7 +81,7 @@ export default function BlogNav() {
                     <ul
                         className="
                         hidden gap-x-8
-                        lg:flex flex-row border-b-2 p-1 bg-black text-white justify-center border-white
+                        lg:flex flex-row p-1 bg-black text-white justify-center
                         "
                     >
                         {[
