@@ -23,4 +23,10 @@ export const themes = {
         textColor: 'black',
         textBackground: '#F9F9F9',
     },
+    gray: {
+        color: 'black',
+        background: 'white',
+        textColor: 'black',
+        textBackground: '#e9e2e2',
+    },
 };

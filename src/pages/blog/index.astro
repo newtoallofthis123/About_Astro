@@ -8,6 +8,7 @@ posts = posts.filter((post:any) => {
 posts = posts.sort((a:any, b:any) => {
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
 });
+const posts_length = posts.length
 posts = posts.slice(0, 3);
 ---
 
@@ -43,7 +44,7 @@ posts = posts.slice(0, 3);
                     </div>
                     <div>
                         <p>
-                            {posts.length} posts so far! Check them all out.
+                            {posts_length} posts so far! Check them all out.
                         </p>
                         <h2 class="text-2xl font-bold py-4">
                             AI and Citations

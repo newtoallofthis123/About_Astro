@@ -8,6 +8,7 @@ import UpdateArchive from '../components/updates/archive';
 const theme = themes[frontmatter.theme] || themes['default'];
 let posts = await Astro.glob('../pages/blog/*/*.mdx');
 posts.sort((a:any, b:any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title);
 const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title);
 ---
 
@@ -60,34 +61,38 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
             </div>
             <div id="recommended" class="hidden md:block md:w-1/5 overflow-y-scroll">
                 <div style="height: 50vh">
-                    <div>
-                        <h2 class="text-3xl text-center p-0 py-10">Recommended</h2>
-                        {
-                            recommended.map((post:any) => (
-                                <div  
-                                onclick={
-                                    "location.href = '" + post.url + "'"
+                    {
+                        recommended.length > 0 && (
+                            <div>
+                                <h2 class="text-3xl text-center p-0 py-10">Recommended</h2>
+                                {
+                                    recommended.map((post:any) => (
+                                        <div  
+                                        onclick={
+                                            "location.href = '" + post.url + "'"
+                                        }
+                                        class="flex flex-col border-black border-b-2 py-4 cursor-pointer justify-center items-center">
+                                            <div class="w-full">
+                                                <img class="rounded-md" src={post.frontmatter.image} alt="Blog Header">
+                                            </div>
+                                            <div class="w-full">
+                                                <h2 class="text-2xl font-bold p-1">{post.frontmatter.title}</h2>
+                                                <p class="text-md font-light p-1">
+                                                    {post.frontmatter.description.slice(0, 50) + "..."}
+                                                </p>
+                                                <p class="text-md font-light p-1">
+                                                    {new Date(post.frontmatter.date).toDateString()} | Avg {post.frontmatter.minutesRead}
+                                                </p>
+                                                <a href={post.url} class="text-md font-light p-1 underline">
+                                                    Read More
+                                                </a>
+                                            </div>
+                                        </div>
+                                    ))
                                 }
-                                class="flex flex-col border-black border-b-2 py-4 cursor-pointer justify-center items-center">
-                                    <div class="w-full">
-                                        <img class="rounded-md" src={post.frontmatter.image} alt="Blog Header">
-                                    </div>
-                                    <div class="w-full">
-                                        <h2 class="text-2xl font-bold p-1">{post.frontmatter.title}</h2>
-                                        <p class="text-md font-light p-1">
-                                            {post.frontmatter.description.slice(0, 50) + "..."}
-                                        </p>
-                                        <p class="text-md font-light p-1">
-                                            {new Date(post.frontmatter.date).toDateString()} | Avg {post.frontmatter.minutesRead}
-                                        </p>
-                                        <a href={post.url} class="text-md font-light p-1 underline">
-                                            Read More
-                                        </a>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
+                            </div>
+                        )
+                    }
                     <div class="p-2 my-5 flex flex-col justify-center items-center">
                         <h2 class="p-4 text-lg">Subscribe to my Newsletter</h2>
                         <iframe src="https://noobscience.substack.com/embed" width="280" class="rounded-md bg-white" frameborder="0" scrolling="no"></iframe>
@@ -95,7 +100,7 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
                     <div>
                         <h2 class="text-3xl text-center mt-10 border-t-2 border-black p-5">Latest Posts</h2>
                         {
-                            posts.slice(0, 2).map((post:any) => (
+                            posts.slice(0, 3).map((post:any) => (
                                 <div  
                                 onclick={
                                     "location.href = '" + post.url + "'"
@@ -185,6 +190,16 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
                     </div>
                 )
             }
+        </div>
+        <div class="p-5">
+            <h1 class="font-bold text-center p-2 text-3xl">About the Author</h1>
+            <p class="px-10 py-1">
+                Ishan Joshi is a student and open source enthusiast. He goes by NoobScience online. He is currently pursuing his Bachelors in Computer Science and Engineering from <a href="https://griet.ac.in">GRIET</a>.
+                When he is not coding, you can find him watching a movie or just chilling. You can find him on <a href="https://twitter.com/noobscience1">Twitter</a> and basically any <a href="/social">other</a> social media platforms.
+                Ask him a question, however, beware, you might get a reply that you would not expect.
+                You can also subscribe to his <a href="https://noobscience.substack.com">newsletter</a> to get updates about his latest posts.
+                Thanks for reading this far. Have a nice day!
+            </p>
         </div>
         <footer class="text-center p-5 border-black border-t-2">
             <h1 class="font-bold text-2xl"> 
