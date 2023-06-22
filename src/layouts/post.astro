@@ -8,13 +8,17 @@ import UpdateArchive from '../components/updates/archive';
 const theme = themes[frontmatter.theme] || themes['default'];
 let posts = await Astro.glob('../pages/blog/*/*.mdx');
 posts.sort((a:any, b:any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title);
-const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title);
+posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true);
+const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title && frontmatter.draft !== true);
 ---
 
 <Base title={frontmatter.title + " | Ishan Writes"}>
     <BlogNav client:load />
-    <style define:vars={{color: theme.color, bg: theme.background, textColor: theme.textColor, textBg: theme.textBackground}}>
+    <style define:vars={{color: theme.color, bg: theme.background, textColor: theme.textColor, textBg: theme.textBackground, full:theme.full}}>
+        #full{
+            color: var(--color);
+            background-color: var(--bg);
+        }
         #main{
             color: var(--color);
             background-color: var(--bg);
@@ -28,8 +32,17 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
             background: transparent;
         }
     </style>
-    <main>
+    <main
+    id={
+        theme.full ? "full" : ""
+    }
+    >
         <div id="main" class="p-2 md:p-5">
+            {
+                frontmatter.draft && (
+                    <h1 class="text-center p-2 font-bold text-2xl">The Above Article is a draft</h1>
+                )
+            }
             <h1 class="text-center p-5 font-bold text-3xl md:text-6xl">{frontmatter.title}</h1>
             {
                 frontmatter.author && (
@@ -93,10 +106,6 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
                             </div>
                         )
                     }
-                    <div class="p-2 my-5 flex flex-col justify-center items-center">
-                        <h2 class="p-4 text-lg">Subscribe to my Newsletter</h2>
-                        <iframe src="https://noobscience.substack.com/embed" width="280" class="rounded-md bg-white" frameborder="0" scrolling="no"></iframe>
-                    </div>
                     <div>
                         <h2 class="text-3xl text-center mt-10 border-t-2 border-black p-5">Latest Posts</h2>
                         {
@@ -125,8 +134,12 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
                             ))
                         }
                     </div>
+                    <div class="p-2 my-5 flex flex-col justify-center items-center">
+                        <h2 class="p-4 text-lg">Subscribe to my Newsletter</h2>
+                        <iframe src="https://noobscience.substack.com/embed" width="280" class="rounded-md bg-white" frameborder="0" scrolling="no"></iframe>
+                    </div>
                     <div style="font-family: sans-serif;">
-                        <h2 class="text-3xl text-center p-5">Few Quips</h2>
+                        <h2 class="text-3xl text-center p-5 border-t-2 border-black">Few Quips</h2>
                         <UpdateArchive num={6} client:idle />
                     </div>
                     <div>
@@ -215,6 +228,21 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
     body {
         background-color: #f8f8f8;
     }
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+    background: #888;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-track:hover {
+    background: #ddd;
+    }
     main {
         font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;
     }
@@ -258,6 +286,11 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
     blockquote>p{
         font-size: 1.2rem;
         font-style: italic;
+    }
+    pre{
+        padding: 1rem;
+        border-radius: 12px;
+        font-size: 1rem;
     }
     @media (max-width: 768px){
         h1{

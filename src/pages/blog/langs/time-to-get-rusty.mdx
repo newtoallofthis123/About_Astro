@@ -1,0 +1,84 @@
+---
+title: It's time to get Rusty
+date: 2023-06-22
+author: Ishan
+tags: [rust, programming]
+category: programming
+layout: "../../../layouts/post.astro"
+image: /assets/blog/images/rusty.jpg
+theme: rust
+description: Have a old codebase that handles high value, heavy operations? It is time to make that code base Rusty.
+draft: true
+---
+
+Have a old codebase that handles high value, heavy operations? It is time to make that code base Rusty.
+Rust Lang is a modern programming language that is blazing fast, memory safe and thread safe.
+It is a great language for writing high performance code that is also safe to use.
+The beauty of Rust is that it prevents from writing unsafe code, by well, to put it simply, not compiling it.
+I love this concept and the simplicity of it still amazes me.
+There is a reason why so many developers are talking about using rust for their critical infrastructure.
+
+Small Disclaimer before we proceed though, I am not a Rust expert, neither do I have enough experience to be called a Rustacean.
+I merely started learning rust a few weeks ago and I am still learning.
+I am using combination of Rust Book and GitHub CoPilot to learn Rust and so far it has been a great experience.
+One more thing, I am primarily a JavaScript developer, so I might get some things wrong, if I do, please let me know.
+With that out of the way, let's get started.
+
+## Rust Basics
+
+In a way, Rust is the perfect fusion between C++ and JavaScript.
+It has a very beautiful and easy to read syntax, that is quite reminiscent of languages like Elixir and Haskell.
+However, coming from JavaScript, I found the syntax to be a bit confusing at first.
+I still find it a bit confusing, but I am getting used to it.
+Quick pointer, I know this might be wrong, but think of the `A::B` as a B being called from a class A.
+I know I just butchered the explanation, but I hope you get the idea.
+
+This is basic syntax if you are new
+
+```rust
+fn say_hello(name:&str) -> String {
+    format!("Hello {}", name)
+}
+
+fn main(){
+    println!("{}", say_hello("Ishan"));
+}
+```
+
+I don't usually like to include code snippets in my blog posts, but I think it is necessary here.
+The complain about rust I here a lot is that it is too verbose and this makes even the most basic of tasks,
+like asking for user input, a bit too complicated.
+
+For example, to ask the user for two numbers and then add them, you would have to do something like this
+
+```rust
+fn main(){
+    let mut input = String::new();
+    
+    println!("Enter first number");
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+    let first_number: i32 = input.trim().parse().expect("Please type a number!");
+    
+    input.clear();
+    
+    println!("Enter second number");
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+    let second_number: i32 = input.trim().parse().expect("Please type a number!");
+    
+    println!("The sum is {}", first_number + second_number);
+}
+```
+
+As you can see, it is quite a bit of code for a simple task.
+However, I think this is a good thing.
+It forces you to think about what you are doing.
+I know this is just me convincing myself that it is a good thing, but I really do think it is.
+One more thing that is quite overlooked is the fact that Rust is in a weird way, caterred towards a few particular use cases.
+For example, rust has a handy Macro that gathers the command line arguments and returns them as a vector.
+It is called `std::env::args()` and this is one of the most intuitive ways to get command line arguments I have seen from low level languages.
+
+One more thing that makes rust so wonderful is the fact that it has a whole ecosystem of libraries and tools.
+The library ecosystem is called crates and it is quite easy to use.
+It is very similar to npm, but it is built into the language itself.
+One more thing that I love about crates is the fact that it downloads to a global cache, so you don't have to download the same crate again and again.
+Unlike npm, where you have to download the same package again and again for each project.

@@ -29,4 +29,17 @@ export const themes = {
         textColor: 'black',
         textBackground: '#e9e2e2',
     },
+    rust: {
+        color: 'black',
+        background: '#f5a142',
+        textColor: 'black',
+        textBackground: 'white',
+    },
+    pink: {
+        color: 'black',
+        background: '#ffbad7',
+        textColor: 'black',
+        textBackground: '#ffbad7',
+        full: true,
+    },
 };

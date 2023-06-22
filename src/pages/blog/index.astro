@@ -12,7 +12,7 @@ const posts_length = posts.length
 posts = posts.slice(0, 3);
 ---
 
-<Blog title="Ishan Writes">
+<Blog title="Ishan Writes | Tech, Opinions and Culture">
     <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-4/6">
             <h1 class="text-center text-2xl md:text-4xl p-4 md:p-8 font-bold">
@@ -21,7 +21,7 @@ posts = posts.slice(0, 3);
             <div class="flex flex-col p-4 justify-center items-center">
                 <div class="w-full md:w-4/5">
                     <p class="text-xl">
-                        <span class="text-2xl md:text-3xl text-red-500">A</span>nd I need an outlet
+                        Tech | Opinions | Culture
                     </p>
                     <div class="py-8">
                         <p>
@@ -82,7 +82,10 @@ posts = posts.slice(0, 3);
                             }
                             class="border-gray-200 border-b-2"
                             >
-                                <div class="text-center py-4">
+                                <div class="py-4">
+                                    <p class="text-sm px-1">
+                                    {post.frontmatter.category.slice(0, 1).toUpperCase() + post.frontmatter.category.slice(1)}
+                                    </p>
                                     <img src={
                                         post.frontmatter.image
                                     } class="w-full" alt="">
