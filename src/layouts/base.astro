@@ -2,8 +2,9 @@
 export interface Props {
     title: string;
     img?: string;
+    description?: string;
 }
-const {title, img} = Astro.props
+const {title, img, description} = Astro.props
 import "../base.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 ---
@@ -25,9 +26,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <meta name="title" content="NoobScience" />
     <meta
         name="description"
-        content="Hi! I am Ishan. I am a Student and Open Source Enthusiast. This is my personal portfolio website. I Like to Code Stuff. Check out my work!"
+        content={description || "Hi! I am Ishan. I am a Student and Open Source Enthusiast. This is my personal portfolio website. I Like to Code Stuff. Check out my work!"}
     />
-    <meta name="title" content="NoobScience" />
+    <meta name="title" content={title || "NoobScience"} />
     <meta
         name="keywords"
         content="noobscience, noob science, NoobScience, newtoallofthis123, technology, website"
@@ -38,18 +39,18 @@ import "bootstrap-icons/font/bootstrap-icons.css";
     <meta property="twitter:title" content="NoobScience" />
     <meta
         property="twitter:description"
-        content="Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"
+        content={description || "Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"}
     />
     <meta
         property="twitter:image"
         content={ "https://beta.noobscience.rocks"+ img || "https://beta.noobscience.rocks/assets/banner.png"}
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://noobscience.rocks/" />
-    <meta property="og:title" content="NoobScience" />
+    <meta property="og:url" content="https://beta.noobscience.rocks/" />
+    <meta property="og:title" content={title || "NoobScience"} />
     <meta
         property="og:description"
-        content="Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"
+        content={description || "Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!"}
     />
     <meta
         property="og:image"

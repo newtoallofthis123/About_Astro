@@ -12,7 +12,7 @@ posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title 
 const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title && frontmatter.draft !== true);
 ---
 
-<Base title={frontmatter.title + " | Ishan Writes"} img={frontmatter.image || '/assets/banner.png'}>
+<Base title={frontmatter.title + " | Ishan Writes"} img={frontmatter.image || '/assets/banner.png'} description={frontmatter.description}>
     <BlogNav client:load />
     <style define:vars={{color: theme.color, bg: theme.background, textColor: theme.textColor, textBg: theme.textBackground, full:theme.full}}>
         #full{
