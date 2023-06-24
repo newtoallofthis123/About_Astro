@@ -1,7 +1,7 @@
 ---
 import BlogNav from '../components/blog_nav';
 import Base from './base.astro';
-const { frontmatter: frontmatter }= Astro.props;
+const { frontmatter }= Astro.props;
 import { themes } from '../pages/blog/themes';
 import UpdateArchive from '../components/updates/archive';
 //@ts-ignore
@@ -12,7 +12,7 @@ posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title 
 const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title && frontmatter.draft !== true);
 ---
 
-<Base title={frontmatter.title + " | Ishan Writes"}>
+<Base title={frontmatter.title + " | Ishan Writes"} img={frontmatter.image || '/assets/banner.png'}>
     <BlogNav client:load />
     <style define:vars={{color: theme.color, bg: theme.background, textColor: theme.textColor, textBg: theme.textBackground, full:theme.full}}>
         #full{
@@ -38,11 +38,6 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
     }
     >
         <div id="main" class="p-2 md:p-5">
-            {
-                frontmatter.draft && (
-                    <h1 class="text-center p-2 font-bold text-2xl">The Above Article is a draft</h1>
-                )
-            }
             <h1 class="text-center p-5 font-bold text-3xl md:text-6xl">{frontmatter.title}</h1>
             {
                 frontmatter.author && (
