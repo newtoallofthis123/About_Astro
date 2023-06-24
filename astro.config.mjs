@@ -3,22 +3,25 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import vercel from "@astrojs/vercel/serverless";
-import remarkHtml from 'remark-html';
-import { remarkReadingTime } from './remark-reading-time.mjs';
-
+import markdownConfig from './markdown.config';
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://beta.noobscience.rocks",
-  integrations: [react(), tailwind(), mdx(), sitemap()],
+  integrations: [react(), tailwind(), mdx(
+    {
+      ...markdownConfig,
+      extendPlugins: false
+    }
+  ), sitemap()],
   output: "server",
   adapter: vercel(),
   markdown: {
-    remarkPlugins: [remarkHtml, remarkReadingTime],
+    ...markdownConfig,
     gfm: true,
     shikiConfig: {
-      theme: 'monokai',
+      theme: 'dark-plus',
       langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'md', 'mdx', 'rust'],
       wrap: true,
     },

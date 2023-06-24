@@ -42,4 +42,10 @@ export const themes = {
         textBackground: '#ffbad7',
         full: true,
     },
+    chill_black: {
+        color: 'white',
+        background: '#1a1c22',
+        textColor: 'black',
+        textBackground: 'white',
+    },
 };

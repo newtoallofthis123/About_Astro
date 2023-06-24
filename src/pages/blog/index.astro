@@ -9,7 +9,7 @@ posts = posts.sort((a:any, b:any) => {
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
 });
 const posts_length = posts.length
-posts = posts.slice(0, 3);
+posts = posts.slice(0, 4);
 ---
 
 <Blog title="Ishan Writes | Tech, Opinions and Culture">
@@ -21,7 +21,7 @@ posts = posts.slice(0, 3);
             <div class="flex flex-col p-4 justify-center items-center">
                 <div class="w-full md:w-4/5">
                     <p class="text-xl">
-                        Tech | Opinions | Culture
+                        Tech | Opinions | Culture | Journal
                     </p>
                     <div class="py-8">
                         <p>
@@ -43,9 +43,23 @@ posts = posts.slice(0, 3);
                         </p>
                     </div>
                     <div>
+                        <h2 class="text-2xl font-bold py-4">
+                            Ideologies and Opinions
+                        </h2>
                         <p>
-                            {posts_length} posts so far! Check them all out.
+                            Well, I thought I should make this clear, just in case.
+                            All the content written in this blog is my own opinion and does not reflect the opinion of any other person or organization.
+                            Some of these might not be based in cold hard facts, but they are my opinions and I am sorry if I hurt your feelings.
+                            In the end, I am just a 19 year old kid, so please don't take my opinions too seriously.
+                            I started programming quite recently, so, if you think I did something wrong, please let me know.
+                            One more thing, I am not a native English speaker, so please excuse any grammatical errors you might find.
+                            Moreover, I might use some terms and phrases from the programming world and the GenZ world, so please excuse that as well.
                         </p>
+                    </div>
+                    <p>
+                        There are {posts_length} posts so far! Check them all out.
+                    </p>
+                    <div>
                         <h2 class="text-2xl font-bold py-4">
                             AI and Citations
                         </h2>
@@ -73,8 +87,7 @@ posts = posts.slice(0, 3);
             </p>
             <div>
                 {
-                    posts.map((post:any, index:number) => {
-                        if (index > 3) return;
+                    posts.map((post:any) => {
                         return (
                             <div 
                             onclick={

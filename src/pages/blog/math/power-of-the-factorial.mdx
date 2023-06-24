@@ -1,0 +1,95 @@
+---
+title: To The Power of...
+author: Ishan
+date: 2023-06-25
+image: /assets/blog/images/factorials_math.jpg
+description: The Power of Exponents and Factorials
+tags: ["math", "factorials"]
+category: math
+layout: "../../../layouts/post.astro"
+draft: true
+---
+
+Mathematics is very cool sometimes.
+First off, I am no mathematian and as my grades show, I am not the best at math.
+But I do find it very interesting.
+So, for a first, I am going to talk some math, by telling you about a very 
+cool problem I found. It's called the 52! problem.
+
+## The Problem
+
+Now, the premise is quite simple. Let's say you are a very good counter.
+You know, a timer, a counter, a tally, whatever you want to call it.
+Now, imagine you have set the timer for 52 factorial seconds.
+For context, this is how long 52! seconds is:
+
+```
+80,658,175,170,943,876,845,634,591,553,351,679,477,960,544,579,306,048,386,139,594,686,464
+```
+
+That's a lot of seconds.
+Now, if you don't know what factorials are, they are basically the product of
+all the numbers from 1 to the number you are calculating the factorial of.
+So basically:
+
+$$
+n! = n * (n-1) * (n-2) * ... * 1
+$$
+
+Now this might seem rather small, but it is actually a very big number.
+The thing about factorials is that they grow very fast.
+For example, the factorial of 5 is 120, 
+but the factorial of 10 is 3,628,800.
+So, you see, even if you double the number, the factorial grows by a lot.
+Let's get back now.
+
+So, as I was saying, you have set the timer for 52! seconds.
+That's a lot of seconds, right?
+Can't put that into perspective? Well, let's try.
+We all know that the universe is about 13.8 billion years old.
+That's lot of time, right? Well, let's see how many seconds that is.
+
+$13,800,000,000 * 365 * 24 * 60 * 60 = 435,139,200,000,000$
+
+Now, to do all that math, let's write a simple python script.
+Now you can do this in other languages too, but you would need to do
+a lot of memory management and stuff, so I am going to use python.
+
+```python
+def factorial(num) -> int:
+    if num == 1:
+        return 1
+    else:
+        return num * factorial(num-1)
+
+fact = factorial(52)
+print(f'The Factorial of the number 52 is {fact:,.0f}')
+days = fact / (60*60*24)
+print("Now calculating years")
+years = days / 365
+print(f'The number of years is {years:,.0f}')
+universes = years / 13.8e9
+print(f'That is {universes:,.0f} universes')
+```
+
+Now, if you run this, you will get the following output:
+
+```
+The Factorial of the number 52 is 80,658,175,170,943,876,845,634,591,553,351,679,477,960,544,579,306,048,386,139,594,686,464
+Now calculating years
+The number of years is 2,557,653,956,460,676,127,185,104,076,976,681,458,060,810,360,460,580,598,317,056
+This is 185,337,243,221,788,120,512,221,295,733,831,336,272,352,981,811,200 universe lifetimes
+```
+
+Yes. It's that big.
+So, let's imagine this scenario.
+You have set the timer for 52! seconds.
+And you start at the equator.
+Every 1billion years, you move one meter.
+Now, you have to walk all the way around the earth.
+Every time you walk around the earth, you put a drop of water in the pacific ocean.
+When the pacific ocean is full, you put a piece of paper on the ground.
+When the stack of paper reaches the sun, you take a look at the timer.
+
+You would have to do this 185,337,243,221,788,120,512,221,295,733,831,336,272,352,981,811,200 times.
+That's a lot of times.

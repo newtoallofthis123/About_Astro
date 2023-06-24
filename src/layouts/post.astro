@@ -16,8 +16,8 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
     <BlogNav client:load />
     <style define:vars={{color: theme.color, bg: theme.background, textColor: theme.textColor, textBg: theme.textBackground, full:theme.full}}>
         #full{
-            color: var(--color);
-            background-color: var(--bg);
+            color: var(--textColor);
+            background-color: var(--textBg);
         }
         #main{
             color: var(--color);
@@ -160,7 +160,7 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
                     <div class="flex flex-wrap justify-center items-center p-2">
                         {
                             frontmatter.tags.map((tag:any) => (
-                                <a href={"/blog/tags/" + tag} class="p-2 m-2 bg-gray-200 rounded-md">{tag}</a>
+                                <a href={"/blog/tags/" + tag} class="p-2 m-2 bg-gray-200 text-black rounded-md">{tag}</a>
                             ))
                         }
                     </div>
@@ -265,14 +265,15 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
     }
     p {
         font-size: 1rem;
+        padding: 0.5rem 0;
         line-height: 2.2rem;
     }
     a {
         text-decoration: underline;
     }
     ol{
-        font-size: 1.2rem;
-        line-height: 2.5rem;
+        font-size: 1rem;
+        line-height: 2.2rem;
         list-style-type: decimal;
         padding-left: 1.2rem;
     }
@@ -290,7 +291,14 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
     pre{
         padding: 1rem;
         border-radius: 12px;
-        font-size: 1rem;
+        font-size: 1.1rem;
+    }
+    .heading{
+        text-decoration: none;
+    }
+    svg{
+        max-width: 100%;
+        overflow-x: scroll;
     }
     @media (max-width: 768px){
         h1{
