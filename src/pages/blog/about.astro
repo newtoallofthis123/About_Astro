@@ -1,3 +1,54 @@
 ---
-return Astro.redirect("/about")
+import Blog from "../../layouts/blog.astro";
 ---
+
+<Blog title="About Ishan Writes">
+    <div class="flex flex-col md:flex-row justify-center items-center">
+        <div class="p-3 md:mx-10 md:w-3/5 w-full">
+            <h1 class="text-center text-3xl font-bold p-5">
+                Welcome to Ishan Writes
+            </h1>
+            <p>
+                Hi! I am Ishan. I am a student and a full stack developer. However, since
+                I was young, I have always enjoyed writing.
+                So, why not combine all the 2 things I love and create a blog from starch?
+                So, with that, I present to you, Ishan Writes.
+                My little corner on the internet where I write about things I love.
+                I have still not decided a niche for this blog, but I will soon.
+                For now, you'll find this blog to be a mess of random topics, from tech to
+                movies to lifestyle.
+                I do hope you enjoy your stay here.
+            </p>
+            <p>
+                One question you might immediately ask is why not use a service like Medium or Hashnode?
+                The short answer? I do use them, but I use them mostly for discoveribility.
+                I want to have a place where I can write about anything I want, without having to worry about
+                the platform.
+                I however do cross post some of my articles to Substack and Hashnode.
+                I also use Substack for my newsletter.
+                You can subscribe to it <a href="https://noobscience.substack.com">here</a>.
+                However, I do hope you read my articles here.
+                I took quite some time and effort to build this blog from scratch.
+                So, I would really appreciate it if you read my articles here.
+                I hope you like the design of this blog.
+                It was partially inspired by NY Times and Wired.
+            </p>
+            <p>
+                I have made blogs in the past, but this time, I wanted one with all the basic features.
+                I was able to add theme support, etc.
+                I am also quite proud of the speed of this blog.
+            </p>
+            <p>
+                So, with that, I hope you enjoy your stay here.
+                If you have any suggestions, feel free to contact me.
+                Happy reading!
+            </p>
+        </div>
+        <div>
+            <img src="/assets/site/beach.svg" alt="">
+            <p class="text-center p-2">
+                Relax and enjoy your stay here.
+            </p>
+        </div>
+    </div>
+</Blog>

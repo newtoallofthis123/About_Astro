@@ -60,7 +60,7 @@ export default function BlogNav() {
                                         'about',
                                         'archive',
                                         'latest',
-                                        'picks',
+                                        'author',
                                         'contact',
                                         'source',
                                     ].map((link) => (
@@ -88,7 +88,7 @@ export default function BlogNav() {
                             'about',
                             'archive',
                             'latest',
-                            'picks',
+                            'author',
                             'contact',
                             'source',
                         ].map((link) => (
