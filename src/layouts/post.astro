@@ -8,8 +8,16 @@ import UpdateArchive from '../components/updates/archive';
 const theme = themes[frontmatter.theme] || themes['default'];
 let posts = await Astro.glob('../pages/blog/*/*.mdx');
 posts.sort((a:any, b:any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true);
-const recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title && frontmatter.draft !== true);
+let recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title && frontmatter.draft !== true);
+posts.map((post:any) => {
+    frontmatter.tags.map((tag:any) => {
+        if(post.frontmatter.tags.includes(tag) && post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true && !recommended.includes(post)){
+            recommended.push(post);
+        }
+    }
+    );
+});
+posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true && !recommended.includes(post));
 ---
 
 <Base title={frontmatter.title + " | Ishan Writes"} img={frontmatter.image || '/assets/banner.png'} description={frontmatter.description}>
@@ -134,18 +142,30 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
                         <iframe src="https://noobscience.substack.com/embed" width="280" class="rounded-md bg-white" frameborder="0" scrolling="no"></iframe>
                     </div>
                     <div style="font-family: sans-serif;">
-                        <h2 class="text-3xl text-center p-5 border-t-2 border-black">Few Quips</h2>
+                        <h2 class="text-3xl p-5 border-t-2 border-black">Few Quips</h2>
                         <UpdateArchive num={6} client:idle />
                     </div>
                     <div>
                         <h2 class="text-2xl border-t-2 border-black p-5">Links and Stuff</h2>
-                        <button class="btn font-sans bg-yellow-300"><a href={"https://github.com/newtoallofthis123/ishan_writes" + frontmatter.url}>Edit The Source</a></button>
+                        <button class="btn font-sans bg-yellow-300"><a href={"https://github.com/newtoallofthis123/About_Astro/tree/main/src/pages" + frontmatter.url + ".mdx"}>Edit The Source</a></button>
                         {
                             frontmatter.substack && (
                                 <button class="btn font-sans bg-yellow-300"><a href={frontmatter.substack}>Read on Substack</a></button>
                             )
                         }
                         <button class="btn font-sans bg-green-300"><a href={"https://twitter.com/intent/tweet?url=https://beta.noobscience.rocks"+ frontmatter.url}>Share on Twitter</a></button>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl border-t-2 border-black pt-5">Download</h2>
+                        <p>Yes. I am that cool. Download the source .mdx file. Beware, relative paths don't work. You only get the downloaded content</p>
+                        <button id="copy_curl" class="btn font-sans bg-pink-300">
+                            Copy the Curl Command
+                        </button>
+                        <button class="btn font-sans bg-blue-300">
+                            <a download={true} href={"https://raw.githubusercontent.com/newtoallofthis123/About_Astro/main/src/pages" + frontmatter.url  + ".mdx"}>
+                            Download MDX File
+                            </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -218,10 +238,18 @@ const recommended = posts.filter((post:any) => post.frontmatter.category === fro
             </p>
         </footer>
     </main>
+    <script define:vars={{frontmatter:frontmatter}}>
+        const copy_curl = () => {
+            navigator.clipboard.writeText("curl https://raw.githubusercontent.com/newtoallofthis123/About_Astro/main/src/pages" + frontmatter.url  + ".mdx -o '" + frontmatter.title + ".mdx'")
+        }
+        const curl_btn = document.querySelector("#copy_curl")
+        curl_btn.addEventListener("click", copy_curl)
+    </script>
 </Base>
 <style is:inline>
-    body {
-        background-color: #f8f8f8;
+    ::selection{
+        background-color: #6bfaec;
+        color: #000000;
     }
     ::-webkit-scrollbar {
     width: 10px;

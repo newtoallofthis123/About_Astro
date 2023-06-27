@@ -13,9 +13,9 @@ export const themes = {
     },
     maths: {
         color: 'black',
-        background: 'white',
+        background: '#ffdb23',
         textColor: 'black',
-        textBackground: '#CEEFF9',
+        textBackground: 'white',
     },
     social: {
         color: 'black',
