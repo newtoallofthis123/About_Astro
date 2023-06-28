@@ -25,7 +25,8 @@ export default defineConfig({
       langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'md', 'mdx', 'rust'],
       wrap: true,
     },
-    syntaxHighlight: 'shiki'
+    syntaxHighlight: 'shiki',
+    drafts: false,
   },
   compressHTML: true,
   experimental: {

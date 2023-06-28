@@ -8,16 +8,17 @@ import UpdateArchive from '../components/updates/archive';
 const theme = themes[frontmatter.theme] || themes['default'];
 let posts = await Astro.glob('../pages/blog/*/*.mdx');
 posts.sort((a:any, b:any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-let recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title && frontmatter.draft !== true);
+let recommended = posts.filter((post:any) => post.frontmatter.category === frontmatter.category && post.frontmatter.title !== frontmatter.title);
 posts.map((post:any) => {
     frontmatter.tags.map((tag:any) => {
-        if(post.frontmatter.tags.includes(tag) && post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true && !recommended.includes(post)){
+        if(post.frontmatter.tags.includes(tag) && post.frontmatter.title !== frontmatter.title && !recommended.includes(post)){
             recommended.push(post);
         }
     }
     );
 });
 posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true && !recommended.includes(post));
+recommended = recommended.filter((post:any) => post.frontmatter.draft !== true);
 ---
 
 <Base title={frontmatter.title + " | Ishan Writes"} img={frontmatter.image || '/assets/banner.png'} description={frontmatter.description}>
