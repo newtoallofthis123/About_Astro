@@ -48,4 +48,10 @@ export const themes = {
         textColor: 'black',
         textBackground: 'white',
     },
+    green: {
+        color: 'black',
+        background: '#a1ff00',
+        textColor: 'black',
+        textBackground: 'white',
+    }
 };

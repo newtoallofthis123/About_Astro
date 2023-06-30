@@ -1,0 +1,57 @@
+---
+export const prerender = true;
+import Blog from '../../layouts/blog.astro';
+let posts: any = await Astro.glob('./*/*.mdx');
+posts = posts.filter((post: any) => {
+    return !post.frontmatter.draft;
+});
+posts = posts.sort((a: any, b: any) => {
+    return (
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+    );
+});
+posts = posts.filter((post: any) => post.frontmatter.draft !== true && post.frontmatter.quick);
+---
+
+<Blog title="Ishan Writes | Archive">
+    <h1 class="font-bold p-4 text-4xl">
+        Quicks
+    </h1>
+    <p class="p-4 text-lg md:w-4/5">
+        This is a collection of quick posts that I write. These are usually
+        short and are not as well researched as my other posts. I write these
+        when I have a quick thought that I want to share with the world.
+    </p>
+    <div class="">
+        {
+            posts.map((post: any) => {
+                return (
+                    <div class="flex flex-col md:flex-row p-4 border-gray-400 border-b-2">
+                        <div>
+                            {post.frontmatter.image && (
+                                <img
+                                    class="rounded-md"
+                                    width={256}
+                                    src={post.frontmatter.image}
+                                    alt="Blog Image"
+                                />
+                            )}
+                        </div>
+                        <div class="p-4 pl-0">
+                            <a href={post.url} class="text-2xl font-bold">
+                                {post.frontmatter.title}
+                            </a>
+                            <p class="text-gray-500">
+                                {post.frontmatter.description}
+                            </p>
+                            <p class="text-gray-500">
+                                {new Date(post.frontmatter.date).toDateString()}
+                            </p>
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</Blog>

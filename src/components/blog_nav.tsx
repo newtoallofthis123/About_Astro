@@ -59,10 +59,10 @@ export default function BlogNav() {
                                     {[
                                         'about',
                                         'archive',
+                                        'quicks',
                                         'latest',
                                         'author',
                                         'contact',
-                                        'source',
                                     ].map((link) => (
                                         <li key={link} className="text-2xl">
                                             <a
@@ -87,10 +87,10 @@ export default function BlogNav() {
                         {[
                             'about',
                             'archive',
+                            'quicks',
                             'latest',
                             'author',
                             'contact',
-                            'source',
                         ].map((link) => (
                             <li key={link} className="text-xl">
                                 <a

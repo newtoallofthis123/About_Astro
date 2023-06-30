@@ -17,8 +17,8 @@ posts.map((post:any) => {
     }
     );
 });
-posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true && !recommended.includes(post));
-recommended = recommended.filter((post:any) => post.frontmatter.draft !== true);
+posts = posts.filter((post:any) => post.frontmatter.title !== frontmatter.title && post.frontmatter.draft !== true && !recommended.includes(post) && !post.frontmatter.quick);
+recommended = recommended.filter((post:any) => post.frontmatter.draft !== true && !post.frontmatter.quick);
 ---
 
 <Base title={frontmatter.title + " | Ishan Writes"} img={frontmatter.image || '/assets/banner.png'} description={frontmatter.description}>
