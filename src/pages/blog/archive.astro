@@ -3,7 +3,7 @@ export const prerender = true;
 import Blog from "../../layouts/blog.astro";
 let posts:any = await Astro.glob("./*/*.mdx");
 posts = posts.filter((post:any) => {
-    return !post.frontmatter.draft;
+    return !post.frontmatter.draft && !post.frontmatter.quick;
 });
 posts = posts.sort((a:any, b:any) => {
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
@@ -19,23 +19,23 @@ posts = posts.filter((post:any) => post.frontmatter.draft !== true);
         {
             posts.map((post:any) => {
                 return (
-                    <div class="flex flex-col md:flex-row p-4 border-gray-400 border-b-2">
+                    <div class="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row p-4 border-gray-400 border-b-2">
                         <div>
                             {
                                 post.frontmatter.image && (
-                            <img class="rounded-md" width={256} src={post.frontmatter.image} alt="Blog Image">
+                            <img class="rounded-md w-96" width={512} src={post.frontmatter.image} alt="Blog Image">
 
                                 )
                             }
                         </div>
                         <div class="p-4">
-                            <a href={post.url} class="text-2xl font-bold">
+                            <a href={post.url} class="text-2xl text-center md:text-justify font-bold">
                                 {post.frontmatter.title}
                             </a>
-                            <p class="text-gray-500">
+                            <p class="text-gray-500 w-full md:w-3/5 py-2">
                                 {post.frontmatter.description}
                             </p>
-                            <p class="text-gray-500">
+                            <p class="text-gray-500 text-sm">
                                 {new Date(post.frontmatter.date).toDateString()}
                             </p>    
                         </div>

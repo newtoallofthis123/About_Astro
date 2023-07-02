@@ -1,0 +1,71 @@
+---
+export const prerender = true;
+import Base from "../layouts/base.astro";
+import packageJson from "../../package.json";
+---
+
+<Base title="noobScience.rocks Changelog">
+    <div>
+        <div class="py-10 pt-5">
+            <h1 class="text-4xl p-4 text-center font-bold">Site ChangeLog to v.{packageJson.version}</h1>
+            <div class="text-lg flex flex-col justify-center items-center px-3 md:px-10 md:mx-10">
+                <div class="w-4/5 leading-9">
+                    <p>
+                        This update was a long time coming. I've been working on
+                    this update for a while now, and I'm glad to finally be
+                    releasing it.
+                    Now, first up, the site has been completely rewritten.
+                    Yes. It no longer uses Next.js. I've switched to Astro,
+                    which is a static site generator that uses React, Vue, or
+                    Svelte. I've chosen to use React, as I'm most familiar with
+                    it. This means that the site is now a static site, and
+                    is much faster than before.
+                    </p>
+                    <p>
+                        Moreover, I have the new Ishan Writes, a blog where I
+                        write about my thoughts on various topics. I've already 
+                        written a few posts, and I'm planning to write more.
+                        You should check it out!
+                        I have implemented quite a few new features, such as
+                        recommended posts, and I am planning to add more, like a 
+                        search bar, and a dark mode.
+                    </p>
+                    <p>
+                        One more thing, Ishan's Updates is now called Quips, 
+                        and is now a part of Ishan Writes. I've also added a
+                        new section called Ishan's Projects, where I'll be
+                        posting about my projects.
+                        I have only been primarily working on noobScience.rocks,
+                        so I don't have any new projects to post about, but I
+                        will be posting about them when I do. I plan on doing a whole
+                        lot of projects this summer, so stay tuned!
+                    </p>
+                    <p>
+                        Now, yo might be wondering why I switched to Astro.
+                        Well, I was looking for a more robust way to maintain 
+                        my site and Next.js was just too much for what I needed.
+                        So, I switched to Astro, which is much more lightweight
+                        and is much easier to use. I'm really liking it so far.
+                        I even wrote a blog post about it, which you can read
+                        <a class="underline" href="/blog/devstories/migrating-to-astro"> here</a>.
+                    </p>
+                    <p>
+                        So, far I am happy with my site, that is the reason I 
+                        pulled it from beta and released it. I hope you like it.
+                        The old site is still available at <a class="underline" href="https://next.noobscience.rocks">next.noobscience.rocks</a> and
+                        it's source code will also be available on GitHub.
+                        My current site's source code is available on GitHub at <a class="underline" href="https://github.com/newtoallofthis123/About_astro">newtoallofthis123/About_astro</a>.
+                        So, check it out!
+                    </p>
+                    <p>
+                        I know not many people visit my site and if you are one of them, I respect you and I thank you for visiting my site.
+                        I hope you like it and I hope you have a great day!
+                    </p>
+                    <p>
+                        - Ishan, 02/07/2023
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Base>

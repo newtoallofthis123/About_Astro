@@ -3,7 +3,7 @@ let posts: any = await Astro.glob('./*/*.mdx');
 posts = posts.filter((post:any) => {
     return !post.frontmatter.draft;
 });
-posts = posts.filter((post:any) => post.frontmatter.draft !== true);
+posts = posts.filter((post:any) => post.frontmatter.draft !== true && !post.frontmatter.quick);
 posts = posts.sort((a: any, b: any) => {
     return (
         new Date(b.frontmatter.date).getTime() -

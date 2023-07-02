@@ -21,7 +21,7 @@ export default function NormalNav({ options = default_options, title="NoobScienc
         <>
             <nav>
                 <div className="dark:bg-gray-950 dark:text-white" id="nav">
-                    <div className="flex flex-row border-y-2 border-black dark:border-white justify-between items-center p-5">
+                    <div className="flex flex-row border-y-2 border-black dark:border-white justify-between items-center p-2">
                         <div className="flex-shrink-0 flex flex-row justify-around">
                             <img
                                 width={192}
