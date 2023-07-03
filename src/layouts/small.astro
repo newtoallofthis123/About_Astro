@@ -1,6 +1,6 @@
 ---
 import BlogNav from '../components/blog_nav';
-import Base from './base.astro';
+import BlogBase from './blog_base.astro';
 const { frontmatter } = Astro.props;
 import { themes } from '../pages/blog/themes';
 import UpdateArchive from '../components/updates/archive';
@@ -39,7 +39,7 @@ recommended = recommended.filter(
 );
 ---
 
-<Base
+<BlogBase
     title={frontmatter.title + ' | Ishan Quicks'}
     img={frontmatter.image || '/assets/banner.png'}
     description={frontmatter.description}
@@ -72,7 +72,7 @@ recommended = recommended.filter(
         }
     </style>
     <main id={theme.full ? 'full' : ''}>
-        <div id="main" class="p-2 md:p-5">
+        <div id="main" class="p-2 md:p-3">
             <h1 class="text-center p-5 font-bold text-3xl md:text-6xl">
                 {frontmatter.title}
             </h1>
@@ -81,7 +81,7 @@ recommended = recommended.filter(
             </h2>
             {
                 frontmatter.author && (
-                    <h2 class="text-sm md:text-lg font-light text-center p-2">
+                    <h2 class="text-sm md:text-lg font-light text-center p-2 pb-0">
                         Written by {frontmatter.author} on{' '}
                         {new Date(frontmatter.date).toLocaleDateString(
                             'en-US',
@@ -94,27 +94,11 @@ recommended = recommended.filter(
                     </h2>
                 )
             }
-            <h2 class="text-sm md:text-lg font-light text-center p-2">
-                {frontmatter.wordsRead} words | Avg {frontmatter.minutesRead}
-            </h2>
-            <div class="flex flex-col justify-center items-center pb-2">
-                <div class="w-5/6 md:p-5">
-                    {
-                        frontmatter.image && (
-                            <img
-                                class="rounded-md"
-                                src={frontmatter.image}
-                                alt="Blog Header"
-                            />
-                        )
-                    }
-                </div>
-            </div>
         </div>
         <div class="flex flex-row justify-center p-1">
             <div
                 id="content"
-                class="md:relative w-full pb-2 md:w-4/6 p-2 md:p-5"
+                class="md:relative w-full pb-2 md:w-5/6 p-2 md:p-2"
             >
                 <slot />
             </div>
@@ -133,80 +117,13 @@ recommended = recommended.filter(
                 </div>
             )
         }
-        <div>
-            {
-                recommended.length > 0 && (
-                    <div>
-                        <h1 class="text-2xl text-center font-bold pt-2">
-                            You might also like
-                        </h1>
-                        <div class="flex border-gray-500 flex-col md:mx-10 p-2 md:px-10 cursor-pointer justify-center items-center">
-                            {recommended.map((post: any) => (
-                                <div
-                                    onclick={
-                                        "location.href = '" + post.url + "'"
-                                    }
-                                    class="flex flex-col md:flex-row justify-center items-center px-5 py-2"
-                                >
-                                    <div class="w-full md:w-2/6">
-                                        <img
-                                            class="rounded-md"
-                                            src={post.frontmatter.image}
-                                            alt="Blog Header"
-                                        />
-                                    </div>
-                                    <div class="md:pl-10 w-full md:w-4/6">
-                                        <h2 class="text-2xl font-bold p-2">
-                                            {post.frontmatter.title}
-                                        </h2>
-                                        <p class="text-lg font-light p-2">
-                                            {post.frontmatter.description}
-                                        </p>
-                                        <p class="text-lg font-light p-2">
-                                            {new Date(
-                                                post.frontmatter.date
-                                            ).toDateString()}{' '}
-                                            | Avg {post.frontmatter.minutesRead}
-                                        </p>
-                                        <a
-                                            href={post.url}
-                                            class="text-lg font-light p-2 underline"
-                                        >
-                                            Read More
-                                        </a>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )
-            }
-        </div>
-        <div class="p-2 md:p-5">
-            <h1 class="font-bold text-center p-2 text-3xl">About the Author</h1>
-            <p class="px-10 py-1">
-                Ishan Joshi is a student and open source enthusiast. He goes by
-                NoobScience online. He is currently pursuing his Bachelors in
-                Computer Science and Engineering from <a
-                    href="https://griet.ac.in">GRIET</a
-                >. When he is not coding, you can find him watching a movie or
-                just chilling. You can find him on <a
-                    href="https://twitter.com/noobscience1">Twitter</a
-                > and basically any <a href="/social">other</a> social media platforms.
-                Ask him a question, however, beware, you might get a reply that you
-                would not expect. You can also subscribe to his <a
-                    href="https://noobscience.substack.com">newsletter</a
-                > to get updates about his latest posts. Thanks for reading this
-                far. Have a nice day!
-            </p>
-        </div>
+    </main>
         <footer class="text-center p-2 md:p-5 border-black border-t-2">
             <h1 class="font-bold text-2xl">
                 &copy NoobScience {new Date().getFullYear()}
             </h1>
             <p class="text-lg p-4">All Rights Reserved</p>
         </footer>
-    </main>
     <script define:vars={{ frontmatter: frontmatter }}>
         const copy_curl = () => {
             navigator.clipboard.writeText(
@@ -220,7 +137,7 @@ recommended = recommended.filter(
         const curl_btn = document.querySelector('#copy_curl');
         curl_btn.addEventListener('click', copy_curl);
     </script>
-</Base>
+</BlogBase>
 <style is:inline>
     ::selection {
         background-color: #6bfaec;

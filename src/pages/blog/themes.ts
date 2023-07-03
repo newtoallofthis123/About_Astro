@@ -53,5 +53,12 @@ export const themes = {
         background: '#a1ff00',
         textColor: 'black',
         textBackground: 'white',
-    }
+    },
+    light_blue_full: {
+        color: 'black',
+        background: '#99ffff',
+        textColor: 'black',
+        textBackground: '#99ffff',
+        full: true,
+    },
 };

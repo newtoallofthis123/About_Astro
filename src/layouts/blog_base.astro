@@ -1,0 +1,92 @@
+---
+export interface Props {
+    title: string;
+    img?: string;
+    description?: string;
+}
+const { title, img, description } = Astro.props;
+import '../base.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+---
+
+<html lang="en">
+    <title>
+        {title || 'Ishan Writes | Tech, Open Source, and More..'}
+    </title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow, archive" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#ffd845" />
+    <meta name="title" content="Ishan Writes" />
+    <meta
+        name="description"
+        content={description ||
+            'Hi! Welcome to Ishan Writes, my little place on the internet where I write about tech, open source, opinions, and more.'}
+    />
+    <meta name="title" content={title || 'NoobScience'} />
+    <meta
+        name="keywords"
+        content="Ishan Writes, noob science blog, noobscience, NoobScience, Ishan Writes, noobing with the noob, technology, Ishan Blog, noobscience writes, ishan writes a blog"
+    />
+    <meta name="author" content="Ishan Joshi" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://noobscience.rocks/blog" />
+    <meta property="twitter:title" content="Ishan Writes" />
+    <meta
+        property="twitter:description"
+        content={description ||
+            'Hi! Welcome to Ishan Writes, my little place on the internet where I write about tech, open source, opinions, and more.'}
+    />
+    <meta
+        property="twitter:image"
+        content={'https://noobscience.rocks' + img ||
+            'https://noobscience.rocks/assets/banner.png'}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://noobscience.rocks/" />
+    <meta property="og:title" content={title || 'Ishan Writes'} />
+    <meta
+        property="og:description"
+        content={description ||
+            'Hi! Welcome to Ishan Writes, my little place on the internet where I write about tech, open source, opinions, and more.'}
+    />
+    <meta
+        property="og:image"
+        content={'https://noobscience.rocks' + img ||
+            'https://noobscience.rocks/assets/banner.png'}
+    />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="canonical" href="https://noobscience.rocks/blog" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin="anonymous"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Yeseva+One:wght@400;700&family=Allura:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+    <!-- Ads -->
+    <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
+        crossorigin="anonymous"></script>
+    <body>
+        <slot />
+    </body>
+    <style is:global>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+        }
+    </style>
+</html>
