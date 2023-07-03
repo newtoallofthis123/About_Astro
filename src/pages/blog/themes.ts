@@ -61,4 +61,10 @@ export const themes = {
         textBackground: '#99ffff',
         full: true,
     },
+    purple: {
+        color: 'black',
+        background: '#ffa9f7',
+        textColor: 'black',
+        textBackground: 'white',
+    },
 };
