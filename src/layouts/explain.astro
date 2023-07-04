@@ -1,0 +1,138 @@
+---
+import ExplainBase from "./explain_base.astro";
+import ExplainNav from "../components/explain_nav";
+const { frontmatter } = Astro.props;
+
+let posts = await Astro.glob("../pages/explains/*/*.mdx");
+posts.sort(
+    (a: any, b: any) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+);
+let recommended = posts.filter(
+    (post: any) =>
+        post.frontmatter.category === frontmatter.category &&
+        post.frontmatter.title !== frontmatter.title
+);
+posts.map((post: any) => {
+    frontmatter.tags.map((tag: any) => {
+        if (
+            post.frontmatter.tags.includes(tag) &&
+            post.frontmatter.title !== frontmatter.title &&
+            !recommended.includes(post)
+        ) {
+            recommended.push(post);
+        }
+    });
+});
+posts = posts.filter(
+    (post: any) =>
+        post.frontmatter.title !== frontmatter.title &&
+        post.frontmatter.draft !== true &&
+        !recommended.includes(post)
+);
+---
+
+<ExplainBase title={frontmatter.title + " Noob Explains"}>
+    <ExplainNav client:load />
+    <div class="md:py-5 px-5 md:mt-10 md:pt-12">
+        <div class="flex flex-col md:flex-row justify-center">
+            <div class="md:w-3/4 w-full">
+                <div class="md:px-10 md:mx-10">
+                    <div>
+                        <h1 class="py-5 pb-2 md:text-5xl">
+                            {frontmatter.title}
+                        </h1>
+                        <h2 class="leading-2 text-lg font-semibold">
+                            Written by <span class="underline">{frontmatter.author}</span> on {new Date(frontmatter.date).toDateString()}
+                        </h2>
+                    </div>
+                    <slot />
+                </div>
+            </div>
+            <div class="hidden overflow-y-none md:block md:w-1/4 w-full">
+                <div class="">
+                    {
+                        recommended.length > 0 && (
+                            <div>
+                                <h2 class="text-3xl font-bold text-center p-0 py-2">
+                                    Recommended
+                                </h2>
+                                {recommended.map((post: any) => (
+                                    <div
+                                        onclick={
+                                            "location.href = '" + post.url + "'"
+                                        }
+                                        class="flex flex-col border-black border-b-2 py-4 cursor-pointer justify-center items-center"
+                                    >
+                                        <div class="w-full">
+                                            <h2 class="text-2xl font-bold p-1">
+                                                {post.frontmatter.title}
+                                         </h2>
+                                            <p class="text-md font-light p-1">
+                                                Posted in{' '} <span class="text-red-500">
+                                                    {
+                                                    post.frontmatter.category.slice(0, 1).toUpperCase() + post.frontmatter.category.slice(1)
+                                                }</span>
+                                            </p>
+                                            <p class="text-md font-light p-1">
+                                                {new Date(
+                                                    post.frontmatter.date
+                                                ).toDateString()}{' '}
+                                            </p>
+                                            <a
+                                                href={post.url}
+                                                class="text-md font-light p-1 underline"
+                                            >
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</ExplainBase>
+<style is:inline>
+    body{
+        background-color: #f7fafc;
+    }
+    p{
+        font-size: 1.1rem;
+        line-height: 2.2rem;
+    }
+    pre{
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        padding: 1rem 0.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 700;
+    }
+    h1{
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+    h2{
+        font-size: 2rem;
+        line-height: 3rem;
+        padding: 1rem 0;
+    }
+    h3{
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        padding: 0.8rem 0;
+    }
+    h4{
+        font-size: 1.25rem;
+        line-height: 2rem;
+        padding: 0.6rem 0;
+    }
+</style>

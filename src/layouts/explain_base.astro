@@ -1,0 +1,92 @@
+---
+export interface Props {
+    title: string;
+    img?: string;
+    description?: string;
+}
+const { title, img, description } = Astro.props;
+import '../base.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+---
+
+<html lang="en">
+    <title>
+        {title || 'Noob Explains | Notes and Explanations, made simple.'}
+    </title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow, archive" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#ffd845" />
+    <meta name="title" content="Noob Explains" />
+    <meta
+        name="description"
+        content={description ||
+            'Welcome to Noob Explains, a place for notes and explanations about technology, programming, and more.'}
+    />
+    <meta name="title" content={title || 'Noob Explains'} />
+    <meta
+        name="keywords"
+        content="Noob Explains, NoobScience Notes, NoobScience, python notes, explanation"
+    />
+    <meta name="author" content="Ishan Joshi" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://noobscience.rocks/explains" />
+    <meta property="twitter:title" content="Noob Explains" />
+    <meta
+        property="twitter:description"
+        content={description ||
+            'Welcome to Noob Explains, a place for notes and explanations about technology, programming, and more.'}
+    />
+    <meta
+        property="twitter:image"
+        content={'https://noobscience.rocks' + img ||
+            'https://noobscience.rocks/assets/banner.png'}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://noobscience.rocks/explains" />
+    <meta property="og:title" content={title || 'Noob Explains'} />
+    <meta
+        property="og:description"
+        content={description ||
+            'Welcome to Noob Explains, a place for notes and explanations about technology, programming, and more.'}
+    />
+    <meta
+        property="og:image"
+        content={'https://noobscience.rocks' + img ||
+            'https://noobscience.rocks/assets/banner.png'}
+    />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="canonical" href="https://noobscience.rocks/blog" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/favicon.ico" color="#0f0f28" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin="anonymous"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Archivo+Black:wght@700&display=swap"
+        rel="stylesheet"
+    />
+    <!-- Ads -->
+    <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
+        crossorigin="anonymous"></script>
+    <body>
+        <slot />
+    </body>
+    <style is:global>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</html>

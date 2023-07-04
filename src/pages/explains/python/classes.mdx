@@ -1,0 +1,189 @@
+---
+title: Classes in Python
+layout: "../../../layouts/explain.astro"
+author: "NoobScience"
+description: "Classes in python are a way to create your own data types. They are very similar to structs in C++ and Java. Classes help use create code abstractions and make our code more readable and maintainable."
+date: 2023-06-19
+tags: ["python", "classes"]
+category: python
+---
+
+Classes in python are a way to create your own data types. 
+They are very similar to structs in C++ and Java.
+Classes help use create code abstractions and make our code more readable and maintainable.
+
+## Creating a class
+
+To create a class in python we use the `class` keyword followed by the name of the class.
+
+```python
+class Person:
+    pass
+```
+
+> The `pass` keyword is used to tell python that we are not going to write any code in the class yet.
+
+A class can have attributes and methods. Attributes are variables that are associated with the class and methods are functions that are associated with the class.
+So, classes are like blue prints for objects. We can create objects from a class.
+
+## Creating an object
+
+An object is a certain instance of a class. We can create an object from a class by calling the class name as if it were a function.
+
+```python
+class Person:
+    pass
+
+person1 = Person()
+```
+
+> The `person1` object is an instance of the `Person` class.
+
+## Adding attributes to a class
+
+We can add attributes to a class by using the `self` keyword. The `self` keyword is used to refer to the current object.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+person1 = Person("John", 36)
+
+print(person1.name)
+
+# Output: John
+```
+
+The self key word is used to refer to the current object. The `__init__` method is called the constructor. It is called when an object is created from the class.
+It is used to initialize the object.
+
+## Adding methods to a class
+
+A method is a function that you can run for the object. We can add methods to a class by defining a function inside the class.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def say_hello(self):
+        print("Hello, my name is " + self.name)
+
+person1 = Person("John", 36)
+person1.say_hello()
+
+# Output: Hello, my name is John
+```
+
+## Inheritance
+
+Inheritance is a way to create a new class from an existing class. The new class is called the child class and the existing class is called the parent class.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def say_hello(self):
+        print("Hello, my name is " + self.name)
+
+class Student(Person):
+    def __init__(self, name, age, grade):
+        super().__init__(name, age)
+        self.grade = grade
+
+    def say_grade(self):
+        print("My grade is " + self.grade)
+
+student1 = Student("John", 36, "A")
+student1.say_hello()
+
+# Output: Hello, my name is John
+```
+
+In this case the `Student` class inherits from the `Person` class. The `Student` class is the child class and the `Person` class is the parent class.
+
+## Overriding methods
+
+We can override methods in the parent class by defining a method with the same name in the child class.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def say_hello(self):
+        print("Hello, my name is " + self.name)
+
+    def __str__(self):
+        return "Name: " + self.name + ", Age: " + str(self.age)
+```
+
+In this case we have overridden the `__str__` method. This method is called when we try to convert the object to a string.
+Hence, when we try to print the object, the `__str__` method is called.
+
+```bash
+print(person1)
+# Output: Name: John, Age: 36
+```
+
+## Encapsulation
+
+Encapsulation is a way to restrict access to certain methods and attributes. We can do this by using the `__` prefix.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def __say_hello(self):
+        print("Hello, my name is " + self.name)
+
+    def say_hello(self):
+        self.__say_hello()
+
+person1 = Person("John", 36)
+person1.say_hello()
+```
+
+Here, the `__say_hello` method is private. It can only be accessed from within the class. We can access it from the `say_hello` method because it is in the same class.
+This is a way to hide the implementation details of the class from the user.
+
+## Getters and Setters
+
+Getters and setters are methods that are used to get and set the values of attributes. We can use getters and setters to access private attributes.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.__name = name
+        self.__age = age
+    
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.__name = name
+
+person1 = Person("John", 36)
+print(person1.get_name())
+```
+
+Here, we have created a getter and setter for the `name` attribute. We can use these methods to get and set the value of the `name` attribute.
+
+Overall, classes are a very useful feature of python. They help us create code abstractions and make our code more readable and maintainable.
+Try implementing classes in your next project.
+
+Once more thing, if you want to learn more about classes in python, check out the [official documentation](https://docs.python.org/3/tutorial/classes.html).
+
+## References
+
+1. [W3Schools](https://www.w3schools.com/python/python_classes.asp)
+2. [GeekforGeeks](https://www.geeksforgeeks.org/python-classes-and-objects/)
+3. [RealPython](https://realpython.com/python3-object-oriented-programming/)

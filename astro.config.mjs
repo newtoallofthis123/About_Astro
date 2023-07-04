@@ -21,7 +21,7 @@ export default defineConfig({
     ...markdownConfig,
     gfm: true,
     shikiConfig: {
-      theme: 'dark-plus',
+      theme: 'github-light',
       langs: ['javascript', 'html', 'css', 'typescript', 'tsx', 'jsx', 'json', 'markdown', 'mdx', 'bash', 'shell', 'md', 'mdx', 'rust'],
       wrap: true,
     },
