@@ -79,7 +79,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3530337728124227"
         crossorigin="anonymous"></script>
     <body>
-        <slot />
+        <div class="bg-primaryWhite dark:bg-primaryDark text-primaryBlackText dark:text-primaryWhiteText">
+            <slot />
+        </div>
     </body>
     <style is:global>
         html {

@@ -9,17 +9,17 @@ posts = posts.sort((a:any, b:any) => {
     return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
 });
 const posts_length = posts.length
-posts = posts.slice(0, 4);
+posts = posts.slice(0, 10);
 ---
 
 <Blog title="Ishan Writes | Tech, Opinions and Culture">
     <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-4/6">
-            <h1 class="text-center text-2xl md:text-4xl p-4 md:p-8 font-bold">
-                I have a <span>lot</span> of thoughts
-            </h1>
             <div class="flex flex-col p-4 justify-center items-center">
                 <div class="w-full md:w-4/5">
+                    <h1 class="text-2xl md:text-4xl py-4 md:py-8 font-bold">
+                        I have a <span>lot</span> of thoughts
+                    </h1>
                     <p class="text-xl">
                         Tech | Opinions | Culture | Journal
                     </p>
@@ -94,16 +94,13 @@ posts = posts.slice(0, 4);
                             >
                                 <div class="py-4">
                                     <p class="text-sm px-1">
-                                    {post.frontmatter.category.slice(0, 1).toUpperCase() + post.frontmatter.category.slice(1)}
+                                    {post.frontmatter.category}
                                     </p>
-                                    <img src={
-                                        post.frontmatter.image
-                                    } class="w-full" alt="">
                                 </div>
-                                <h2 class="text-center text-2xl">
-                                    {post.frontmatter.title}
+                                <h2 class="text-2xl font-bold">
+                                    {post.frontmatter.emoji || "😎"}{' '}{post.frontmatter.title}
                                 </h2>
-                                <p class="text-center text-sm p-2">
+                                <p class="text-sm p-2">
                                     By {post.frontmatter.author} on {new Date(post.frontmatter.date).toLocaleDateString()} | Avg {post.frontmatter.minutesRead}
                                 </p>
                             </div>
@@ -111,10 +108,6 @@ posts = posts.slice(0, 4);
                     }
                     )
                 }
-            </div>
-            <div class="p-2 flex flex-col justify-center items-center">
-                <h2 class="p-4 text-lg">Subscribe to my Newsletter</h2>
-                <iframe src="https://noobscience.substack.com/embed" class="rounded-md bg-white" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </div>

@@ -47,21 +47,17 @@ export default function Search({
           <div className="w-5/6">
               {results.length != 0 &&
                   results.map((post: any) => (
-                      <div key={post.title} className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row p-4 border-gray-400 border-b-2">
-                          <div>
-                        {
-                          (post.frontmatter.image != null) && (
-                            <img className="rounded-md w-96" width={512} src={post.frontmatter.image} alt="Blog Image" />
-                          )
-                            }
-                          </div>
+                      <div
+                          key={post.title}
+                          className="flex flex-col justify-center items-center md:justify-normal md:items-start md:flex-row p-4 border-gray-400 border-b-2"
+                      >
                           <div className="p-4">
-                              <a
-                                  href={post.url}
-                                  className="text-2xl text-center md:text-justify font-bold"
-                              >
-                                  {post.frontmatter.title}
-                              </a>
+                              <p className="text-2xl text-center md:text-justify font-bold">
+                          {post.frontmatter.emoji}{' '}
+                                  <a href={post.url}>
+                                      {post.frontmatter.title}
+                                  </a>
+                              </p>
                               <p className="text-gray-500 text-lg w-full md:w-3/5 py-2">
                                   {post.frontmatter.description}
                               </p>

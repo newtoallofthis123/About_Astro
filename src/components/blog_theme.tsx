@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Init() {
+export default function BlogTheme() {
     const [icon, setIcon] = React.useState('bi-moon');
     const setTheme = (theme: string) => {
         if (typeof window !== 'undefined') {
@@ -45,7 +45,6 @@ export default function Init() {
     }, []);
     return (
         <>
-            Toggle Mode:
             <button
                 style={{
                     marginLeft: '0.5rem',
@@ -53,7 +52,7 @@ export default function Init() {
                     color: 'var(--color)',
                     border: 'none',
                     cursor: 'pointer',
-                    fontSize: '1.5rem',
+                    fontSize: '1.2rem',
                 }}
                 onClick={() => {
                     const theme = localStorage.getItem('theme');
@@ -65,22 +64,6 @@ export default function Init() {
                 }}
             >
                 <i className={`bi ${icon}`}></i>
-            </button>{' '}
-            or
-            <button
-                style={{
-                    marginLeft: '0.5rem',
-                    background: 'none',
-                    color: 'var(--color)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '1.5rem',
-                }}
-                onClick={() => {
-                    toggleTheme('system');
-                }}
-            >
-                <i className="bi bi-repeat"></i>
             </button>
         </>
     );

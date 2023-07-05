@@ -1,14 +1,15 @@
 import React from "react";
 import "./styles/nav.scss";
 import { motion } from "framer-motion";
+import BlogTheme from "./blog_theme";
 
 export default function BlogNav() {
     const [nav, setNav] = React.useState(false);
     return (
         <>
-            <nav>
+            <nav className="bg-primaryWhite dark:bg-primaryDark">
                 <div id="nav">
-                    <div className="flex flex-row bg-white text-black border-b-2 border-black justify-center items-center p-5">
+                    <div className="flex flex-row border-b-2 border-primaryBlackText dark:border-primaryWhiteText justify-center items-center p-5">
                         <a
                             href="/blog"
                             className="
@@ -32,25 +33,25 @@ export default function BlogNav() {
                                     rotateZ: nav ? 45 : 0,
                                     y: nav ? 8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-black dark:bg-white"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     opacity: nav ? 0 : 1,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-black dark:bg-white"
                             ></motion.span>
                             <motion.span
                                 animate={{
                                     rotateZ: nav ? -45 : 0,
                                     y: nav ? -8 : 0,
                                 }}
-                                className="block h-0.5 w-8 bg-black"
+                                className="block h-0.5 w-8 bg-black dark:bg-white"
                             ></motion.span>
                         </div>
                         {nav && (
                             <motion.div
-                                className="fixed flex bg-white text-black bottom-0 left-0 w-full h-screen items-center justify-center"
+                                className="fixed flex bg-white dark:bg-black bottom-0 left-0 w-full h-screen items-center justify-center"
                                 animate={{ opacity: 1, x: 0 }}
                                 initial={{ opacity: 0, x: 25 }}
                                 transition={{ duration: 0.5 }}
@@ -61,8 +62,8 @@ export default function BlogNav() {
                                         'archive',
                                         'quicks',
                                         'latest',
+                                        'lucky',
                                         'author',
-                                        'contact',
                                     ].map((link) => (
                                         <li key={link} className="text-2xl">
                                             <a
@@ -81,7 +82,7 @@ export default function BlogNav() {
                     <ul
                         className="
                         hidden gap-x-8
-                        lg:flex flex-row p-1 bg-white text-black justify-center
+                        lg:flex flex-row p-1 justify-center
                         "
                     >
                         {[
@@ -89,8 +90,8 @@ export default function BlogNav() {
                             'archive',
                             'quicks',
                             'latest',
+                            'lucky',
                             'author',
-                            'contact',
                         ].map((link) => (
                             <li key={link} className="text-xl">
                                 <a
@@ -127,23 +128,26 @@ export default function BlogNav() {
                                     >
                                         <title>Search</title>
                                         <path
-                                            stroke-width="32"
-                                            stroke-miterlimit="10"
+                                            strokeWidth="32"
+                                            strokeMiterlimit="10"
                                             stroke="currentColor"
                                             fill="none"
                                             d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
                                         ></path>
                                         <path
                                             d="M338.29 338.29L448 448"
-                                            stroke-width="32"
-                                            stroke-miterlimit="10"
-                                            stroke-linecap="round"
+                                            strokeWidth="32"
+                                            strokeMiterlimit="10"
+                                            strokeLinecap="round"
                                             stroke="currentColor"
                                             fill="none"
                                         ></path>
                                     </svg>
                                 </div>
                             </div>
+                        </li>
+                        <li>
+                            <BlogTheme />
                         </li>
                     </ul>
                 </div>

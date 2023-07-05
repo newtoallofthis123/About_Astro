@@ -1,0 +1,8 @@
+---
+let posts = await Astro.glob('../blog/*/*.mdx');
+posts = posts.filter(post => post.frontmatter.draft !== true);
+const ran_num = Math.floor(Math.random() * posts.length);
+
+const emoji = posts[ran_num]
+return Astro.redirect(emoji.url)
+---
