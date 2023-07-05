@@ -76,9 +76,9 @@ recommended = recommended.filter(
             <h1 class="text-center p-5 font-bold text-3xl md:text-6xl">
                 {frontmatter.title}
             </h1>
-            <h2 class="text-sm md:text-lg font-light text-center p-2">
+            <p class="text-sm md:text-lg font-light text-center p-2">
                 {frontmatter.description}
-            </h2>
+            </p>
             {
                 frontmatter.author && (
                     <h2 class="text-sm md:text-lg font-light text-center p-2 pb-0">
@@ -98,7 +98,7 @@ recommended = recommended.filter(
         <div class="flex flex-row justify-center p-1">
             <div
                 id="content"
-                class="md:relative w-full pb-2 md:w-5/6 p-2 md:p-2"
+                class="md:relative w-full pb-2 md:w-5/6 p-2 md:p-4"
             >
                 <slot />
             </div>
@@ -140,7 +140,7 @@ recommended = recommended.filter(
 </BlogBase>
 <style is:inline>
     ::selection {
-        background-color: #6bfaec;
+        background-color: #aef444;
         color: #000000;
     }
     ::-webkit-scrollbar {
@@ -158,14 +158,18 @@ recommended = recommended.filter(
     ::-webkit-scrollbar-track:hover {
         background: #ddd;
     }
-    main {
-        font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;
+    body {
+        background-color: #f4f4f4;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    h1 {
-        font-family: 'Yeseva One', 'Times New Roman', Times, serif;
+    h1,h2,h3,h4{
+        font-family: 'Archivo Black', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    h1,h2,h3,h4>a{
+        text-decoration: none;
     }
     h2 {
-        font-size: 1.6rem;
+        font-size: 2.1rem;
         font-weight: 700;
         padding: 0.75rem 0;
     }
@@ -179,33 +183,44 @@ recommended = recommended.filter(
         padding: 0;
     }
     p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         padding: 0.5rem 0;
-        line-height: 2.2rem;
+        line-height: 2.4rem;
     }
     a {
-        text-decoration: underline;
+        text-decoration: 2px underline #646464;
+        text-underline-offset: 5px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    a:hover{
+        text-decoration: none;
     }
     ol {
-        font-size: 1rem;
+        font-size: 1.1rem;
         line-height: 2.2rem;
         list-style-type: decimal;
         padding-left: 1.2rem;
     }
     blockquote {
         line-height: 2.5rem;
-        padding: 1rem 0;
-        margin: 1rem 0;
-        border-left: 2px solid #000;
+        padding: 0.1rem 0;
+        margin: 0.3rem 0;
+        border-left: 5px solid #000;
         padding-left: 1rem;
     }
     blockquote > p {
         font-size: 1.2rem;
         font-style: italic;
     }
-    pre {
-        padding: 1rem;
+    pre{
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        padding: 1rem 0.5rem;
+        border: 1px solid #e2e8f0;
         border-radius: 12px;
+    }
+    code{
         font-size: 1.1rem;
     }
     .heading {

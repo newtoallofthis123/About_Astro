@@ -16,7 +16,6 @@ export default function Update({ hash }: Props) {
 
     useEffect(() => {
         const url = "/api/updates/" + hash
-        console.log(url)
         const fetchData = async () => {
             try {
                 const response = await fetch(url);
@@ -36,13 +35,13 @@ export default function Update({ hash }: Props) {
                 <h1 className="text-center p-4">Loading...</h1>
             )}
             {latest.name != '' && (
-                <div className="m-2 md:mx-20 mt-0 p-2 md:p-10">
-                    <h1 className="md:text-4xl text-3xl text-center py-4 pt-0 font-bold">
+                <div className="m-2 mt-0 p-2 md:p-10">
+                    <h1 className="md:text-5xl text-3xl py-4 pt-0 font-bold">
                         {latest.name}
                     </h1>
-                    <h2 className="md:text-2xl font-light text-center text-xl">By {latest.author} on {latest.date}</h2>
+                    <p className="font-light text-xl">By {latest.author} on {new Date(latest.date).toDateString()}</p>
                     <div
-                        className="text-xl md:pt-8 p-4 md:p-0 leading-10"
+                        className="text-lg md:pt-8 p-4 w-4/6 md:p-0 leading-10"
                         dangerouslySetInnerHTML={{
                             __html: marked(
                                 latest.content,

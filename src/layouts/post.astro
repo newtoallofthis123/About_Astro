@@ -92,9 +92,9 @@ recommended = recommended.filter(
                     </h2>
                 )
             }
-            <h2 class="text-sm md:text-lg font-light text-center p-2">
+            <p class="text-sm md:text-lg font-light text-center p-2">
                 {frontmatter.wordsRead} words | Avg {frontmatter.minutesRead}
-            </h2>
+            </p>
             <div class="flex flex-col justify-center items-center pb-2">
                 <div class="w-5/6 md:p-5">
                     {
@@ -395,7 +395,7 @@ recommended = recommended.filter(
 </BlogBase>
 <style is:inline>
     ::selection {
-        background-color: #6bfaec;
+        background-color: #aef444;
         color: #000000;
     }
     ::-webkit-scrollbar {
@@ -413,11 +413,12 @@ recommended = recommended.filter(
     ::-webkit-scrollbar-track:hover {
         background: #ddd;
     }
-    main {
-        font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;
+    body {
+        background-color: #f4f4f4;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     h1,h2,h3,h4{
-        font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Archivo Black', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     h1,h2,h3,h4>a{
         text-decoration: none;
@@ -437,9 +438,9 @@ recommended = recommended.filter(
         padding: 0;
     }
     p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         padding: 0.5rem 0;
-        line-height: 2.2rem;
+        line-height: 2.4rem;
     }
     a {
         text-decoration: 2px underline #646464;
@@ -451,7 +452,7 @@ recommended = recommended.filter(
         text-decoration: none;
     }
     ol {
-        font-size: 1rem;
+        font-size: 1.1rem;
         line-height: 2.2rem;
         list-style-type: decimal;
         padding-left: 1.2rem;
@@ -467,10 +468,12 @@ recommended = recommended.filter(
         font-size: 1.2rem;
         font-style: italic;
     }
-    pre {
-        padding: 1rem;
-        border-radius: 12px;
+    pre{
         font-size: 1.1rem;
+        margin: 1rem 0;
+        padding: 1rem 0.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
     }
     code{
         font-size: 1.1rem;

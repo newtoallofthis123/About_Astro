@@ -37,15 +37,15 @@ export default function UpdateArchive({num}: Props) {
             {latest[0].name != '' && (
                 <div>
                     {latest.map((update: any) => (
-                        <div key={update.hash} className="pl-8 py-2">
-                            <h4 className="text-lg font-base">
+                        <div key={update.hash} className="pl-8 py-1">
+                            <p className="text-lg font-base">
                                 <a
                                     className="underline"
                                     href={`/quips/${update.hash}`}
                                 >
                                     {update.name}
                                 </a>
-                            </h4>
+                            </p>
                         </div>
                     ))}
                 </div>

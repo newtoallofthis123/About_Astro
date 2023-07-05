@@ -4,10 +4,10 @@ const {id} = Astro.params
 // @ts-ignore
 const link:any = data[id]
 if(!link) return Astro.redirect("/404")
-import Normal from "../../layouts/normal.astro"
+import Base from "../../layouts/base.astro"
 ---
 
-<Normal title={id + " | Ishan's Links"}>
+<Base title={id + " | Ishan's Links"}>
     <div class="text-center">
         <h1 class="text-5xl font-bold p-4 pt-8">
             Redirecting to
@@ -19,7 +19,7 @@ import Normal from "../../layouts/normal.astro"
             in <span id="time"></span> seconds
         </h1>
     </div>
-</Normal>
+</Base>
 <script>
     let time = 10
     setInterval(() => {
