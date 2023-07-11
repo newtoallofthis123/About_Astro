@@ -22,7 +22,7 @@ export default function Go({ hash }: Props) {
     useEffect(() => {
         const timer = setTimeout(() => {
             typeof window !== undefined && window.location.replace(latest.url);
-        }, 5000);
+        }, 1000);
         return () => clearTimeout(timer);
     }, [latest]);
     return (
@@ -33,22 +33,7 @@ export default function Go({ hash }: Props) {
                     fontFamily: 'Roboto, sans-serif',
                 }}
             >
-                <h1>This site will redirect to</h1>
-                <h1>
-                    <a href={latest.url}>{latest.url}</a>
-                </h1>
-                <p style={{
-                    fontSize: '1.4rem'
-                }}>
-                    You will be redirected in 5 seconds or click{' '}
-                    <a href={latest.url}>here</a>
-                </p>
-                <p>
-                    or
-                </p>
-                <p>
-                    Click <a href="/">here</a> to go back to the home page
-                </p>
+                <h1>Redirecting...</h1>
             </div>
         </>
     );
