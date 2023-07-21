@@ -107,7 +107,7 @@ export default function Nav() {
                             'social',
                             'notes',
                         ].map((link) => (
-                            <li key={link} className="text-3xl">
+                            <li key={link} className="text-2xl">
                                 <a
                                     href={`/${link}`}
                                     className="special_underline"

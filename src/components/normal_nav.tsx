@@ -12,7 +12,6 @@ const default_options = [
     'contact',
     'github',
     'social',
-    'notes',
 ];
 
 export default function NormalNav({ options = default_options, title="NoobScience" }) {
@@ -46,7 +45,7 @@ export default function NormalNav({ options = default_options, title="NoobScienc
                         "
                         >
                             {options.map((link) => (
-                                <li key={link} className="text-3xl">
+                                <li key={link} className="text-2xl">
                                     <a
                                         href={`/${link}`}
                                         className="special_underline"

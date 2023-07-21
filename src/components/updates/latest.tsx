@@ -52,7 +52,7 @@ export default function UpdateLatest() {
                         className="text-xl leading-10"
                         dangerouslySetInnerHTML={{
                             __html: marked(
-                                latest.content.slice(0, 300) + '...'
+                                latest.content.slice(0, 600) + '...'
                                 , {
                                     headerIds: false,
                                     mangle: false,

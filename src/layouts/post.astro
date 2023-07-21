@@ -45,7 +45,7 @@ recommended = recommended.filter(
     img={frontmatter.image || '/assets/banner.png'}
     description={frontmatter.description}
 >
-    <BlogNav client:load />
+    <BlogNav color={theme.color} bg={theme.background} client:load />
     <style
         define:vars={{
             color: theme.color,

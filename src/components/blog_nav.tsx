@@ -3,11 +3,20 @@ import "./styles/nav.scss";
 import { motion } from "framer-motion";
 import BlogTheme from "./blog_theme";
 
-export default function BlogNav() {
+export default function BlogNav(
+    { color = "#000", bg="#fff" }: {
+        //Optional color prop
+        color?: string;
+        bg?: string;
+    }
+) {
     const [nav, setNav] = React.useState(false);
     return (
         <>
-            <nav className="bg-primaryWhite dark:bg-primaryDark">
+            <nav style={{
+                backgroundColor: bg,
+                color: color
+            }} className="bg-primaryWhite dark:bg-primaryDark">
                 <div id="nav">
                     <div className="flex flex-row border-b-2 border-primaryBlackText dark:border-primaryWhiteText justify-center items-center p-5">
                         <a
